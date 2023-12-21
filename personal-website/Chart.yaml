@@ -8,4 +8,4 @@ type: application
 dependencies:
   - name: deployment
     version: 0.0.1
-    repository: https://github.com/MatiWall/helm-charts/tree/main/react-app
+    repository: https://matiwall.github.io/helm-charts/react-app/
