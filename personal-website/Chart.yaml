@@ -6,6 +6,6 @@ description: "This is a big application with lots of dependent subcharts"
 version: 1.1.0
 type: application
 dependencies:
-  - name: deployment
+  - name: react-app
     version: 0.0.1
-    repository: https://matiwall.github.io/helm-charts/react-app/
+    repository: https://matiwall.github.io/helm-charts/
