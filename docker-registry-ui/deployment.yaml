@@ -21,4 +21,8 @@ spec:
           env:
             - name: REGISTRY_URL
               value: "http://docker-registry.mw"
+            - name: SINGLE_REGISTRY
+              value: "true"
+            - name: REGISTRY_TITLE
+              value: "Docker Registry UI"
 
