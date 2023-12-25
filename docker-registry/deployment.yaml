@@ -17,6 +17,9 @@ spec:
         image: registry:latest
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - name: my-storage
+          mountPath: /var/lib/registry
         env:
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
           value: "[http://docker-registry-ui.mw]"
@@ -30,3 +33,7 @@ spec:
           value: "[Docker-Content-Digest]"
         - name: REGISTRY_STORAGE_DELETE_ENABLED
           value: "true"
+      volumes:
+      - name: my-storage
+        persistentVolumeClaim:
+          claimName: docker-registry-pv-claim
