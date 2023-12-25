@@ -11,4 +11,4 @@ spec:
     services:
     - name: docker-registry-service
       port: 5000
-  tls:
+

@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: registry-ui
+  namespace: docker-registry
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`docker-registry-ui.mw`)
+      kind: Rule
+      services:
+        - name: registry-ui
+          port: 80
+
