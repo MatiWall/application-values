@@ -6,7 +6,7 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`registry.example.com`) && PathPrefix(`/`)
+  - match: Host(`docker-registry.mw`) && PathPrefix(`/`)
     kind: Rule
     services:
     - name: docker-registry-service
