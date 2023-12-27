@@ -26,5 +26,5 @@ spec:
             - name: REGISTRY_TITLE
               value: "Docker Registry UI"
             - name: DELETE_IMAGES
-              value: true
+              value: "true"
 
