@@ -12,6 +12,6 @@ spec:
     match: Host(`grafana.mw`)
     priority: 10
     services:
-    - name: arg
+    - name: grafana-service
       port: 80
 
