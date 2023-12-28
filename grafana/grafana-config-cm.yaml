@@ -6,7 +6,13 @@ metadata:
   namespace: grafana
 data:
   datasources.yaml: |-
-    {{ .Files.Get "datasources.yaml" | nindent 2 }}
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus.mw
+        isDefault: true
   grafana.ini: |-
     [paths]
     data = /var/lib/grafana/data
