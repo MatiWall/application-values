@@ -1,33 +1,28 @@
-{{ $root := . }}
-{{ range $path, $_ :=  .Files.Glob  "dashboards/**.json" }}
-{{- with $root }}
+{{- range $path, $_ := .Files.Glob  "dashboards/**.json" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  annotations:
-    grafana-dashboard-folder: /tmp/dashboards/{{ .Values.dashboardsFolder }}
   name: {{ $path | replace "dashboards/" "" | replace ".json" "" }}
   labels:
     {{- include "grafana-dashboards.labels" . | nindent 4 }}
 {{ toYaml $.Values.labels | indent 4 }}
 data:
-  {{ $path | replace "dashboards/" ""}}: |-
+  {{ $path | replace "dashboards/" ""}}.json: |-
 {{ .Files.Get $path | indent 4 }}
 ---
 {{- end -}}
-{{- end -}}
+
 {{- range $key, $value := .Values.importFromValue }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  annotations:
-    grafana-dashboard-folder: /tmp/dashboards/{{ .Values.dashboardsFolder }}
   name: {{ $key }}
   labels:
-    {{- include "grafana-dashboards.labels" $ | nindent 4 }}
+    {{- include "grafana-dashboards.labels" . | nindent 4 }}
 {{ toYaml $.Values.labels | indent 4 }}
 data:
   {{ $key }}.json: |-
     {{ $value }}
 ---
 {{- end }}
+
