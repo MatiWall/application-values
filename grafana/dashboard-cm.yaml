@@ -6,4 +6,6 @@ metadata:
   namespace: grafana
 data:
   k3s-overview.json: |-
-    {{.Files.Get "k3s-monitoring-dashboard.json"  | nindent 4 }}
+    {{.Files.Get "dashboards/k3s-monitoring-dashboard.json"  | nindent 4 }}
+  dashboards.yaml: |-
+    {{.Files.Get "dashboards/dashboards.yaml"  | nindent 4 }}
