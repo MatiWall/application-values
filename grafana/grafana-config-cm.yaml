@@ -5,7 +5,7 @@ metadata:
   name: grafana-config-cm
   namespace: grafana
 data:
-  grafana-ini: |-
+  grafana.ini: |-
     [paths]
     data = /var/lib/grafana/data
     logs = /var/log/grafana
