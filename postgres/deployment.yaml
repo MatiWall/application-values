@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-deployment
+  namespace: postgres
 spec:
   replicas: 1
   selector:
@@ -24,4 +25,3 @@ spec:
           value: myuser
         ports:
         - containerPort: 5432
-
