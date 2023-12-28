@@ -55,7 +55,7 @@ metadata:
   name: sample-role
 rules:
 - apiGroups: [""]
-  resources: ["configmaps", "secrets"]
+  resources: ["configmaps"]
   verbs: ["get", "watch", "list"]
 ---
 apiVersion: v1
