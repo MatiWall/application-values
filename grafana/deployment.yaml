@@ -25,11 +25,14 @@ spec:
             - name: grafana-datasources
               mountPath: /etc/grafana/provisioning/datasources
         - name: grafana-dashboard-sidecar
-          image: kiwigrid/k8s-sidecar:1.25.3
-          args:
-            - -p=3000
-            - -k=/etc/grafana/provisioning/dashboards
-            - -c=grafana-admin:admin@grafana:3000
+          image: kiwigrid/k8s-sidecar:latest
+          env:
+          - name: LABEL
+            value: "grafana_dashboard"
+          - name: FOLDER
+            value: /etc/grafana/provisioning/dashboards
+          - name: RESOURCE
+            value: both
 
       volumes:
         - name: grafana-volume
