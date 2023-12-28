@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-datasources
+  name: grafana-datasources-cm
 data:
   datasources.yaml: |-
     {{ .Files.Get "./datasources.yaml" | nindent 2 }}
