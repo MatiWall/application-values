@@ -1,9 +1,9 @@
 # grafana-configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana-datasources-cm
-data:
-  datasources.yaml: |-
-    {{ .Files.Get "./datasources.yaml" | nindent 2 }}
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: grafana-datasources-cm
+#data:
+#  datasources.yaml: |-
+#    {{ .Files.Get "./datasources.yaml" | nindent 2 }}
 
