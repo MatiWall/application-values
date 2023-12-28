@@ -31,9 +31,3 @@ data:
     [auth]
     disable_login_form = false
 
-    [provisioning]
-    # Dashboard provisioning settings
-    enabled = true
-    dashboard = /etc/grafana/provisioning/dashboards
-    datasources = /etc/grafana/provisioning/datasources
-

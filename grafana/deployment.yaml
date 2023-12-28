@@ -30,6 +30,10 @@ spec:
             - name: grafana-config
               mountPath: /etc/grafana/grafana.ini
               subPath: grafana.ini
+            - name: grafana-provisioning-config
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-provisioning.yaml
+              subPath: dashboard-provisioning.yaml
+              
         - name: grafana-dashboard-sidecar
           image: kiwigrid/k8s-sidecar:latest
           volumeMounts:
@@ -52,6 +56,9 @@ spec:
         - name: grafana-config
           configMap:
             name: grafana-config
+        - name: grafana-dashboard-provisioning
+          configMap:
+            name: grafana-dashboard-provisioning
         - name: shared-volume
           emptyDir: {}
 ---
