@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-cm
+  name: grafana-dashboards-cm
   namespace: grafana
 data:
   k3s-overview.json: |-
