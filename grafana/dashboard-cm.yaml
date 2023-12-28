@@ -5,7 +5,20 @@ metadata:
   name: grafana-dashboards-cm
   namespace: grafana
 data:
-  k3s-overview.json: |-
-    {{.Files.Get "dashboards/k3s-monitoring-dashboard.json"  | nindent 4 }}
   dashboards.yaml: |-
-    {{.Files.Get "dashboards/dashboards.yaml"  | nindent 4 }}
+    apiVersion: 1
+    providers:
+      - name: 'default'
+        orgId: 1
+        folder: '.'
+        type: file
+        disableDeletion: false
+        editable: false
+        updateIntervalSeconds: 15 # adjust as needed
+        options:
+          path: /etc/grafana/provisioning/dashboards
+  k3s-overview.json: |-
+    default:
+      folder: ''
+      title: 'k3s Overview'
+      uri: 'https://raw.githubusercontent.com/MatiWall/application-values/master/grafana/dashboards/k3s-monitoring-dashboard.json'
