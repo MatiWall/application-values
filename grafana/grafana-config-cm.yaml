@@ -5,6 +5,8 @@ metadata:
   name: grafana-config-cm
   namespace: grafana
 data:
+  datasources.yaml: |-
+    {{ .Files.Get "./datasources.yaml" | nindent 2 }}
   grafana.ini: |-
     [paths]
     data = /var/lib/grafana/data
