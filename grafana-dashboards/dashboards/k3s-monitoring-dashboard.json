@@ -101,7 +101,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 0,
         "y": 1
@@ -191,7 +191,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 8,
         "y": 1
@@ -281,7 +281,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 16,
         "y": 1
@@ -369,7 +369,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 9,
       "links": [],
@@ -453,7 +453,7 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 6
+        "y": 8
       },
       "id": 10,
       "links": [],
@@ -538,7 +538,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 6
+        "y": 8
       },
       "id": 11,
       "links": [],
@@ -620,7 +620,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 6
+        "y": 8
       },
       "id": 12,
       "links": [],
@@ -704,7 +704,7 @@
         "h": 3,
         "w": 4,
         "x": 16,
-        "y": 6
+        "y": 8
       },
       "id": 13,
       "links": [],
@@ -787,7 +787,7 @@
         "h": 3,
         "w": 4,
         "x": 20,
-        "y": 6
+        "y": 8
       },
       "id": 14,
       "links": [],
@@ -837,7 +837,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 11
       },
       "id": 33,
       "panels": [],
@@ -917,7 +917,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 12
       },
       "id": 32,
       "links": [],
@@ -1034,7 +1034,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 12
       },
       "id": 45,
       "links": [],
@@ -1138,7 +1138,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 12
       },
       "id": 46,
       "links": [],
@@ -1188,7 +1188,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 19
       },
       "id": 35,
       "panels": [],
@@ -1269,7 +1269,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 20
       },
       "id": 17,
       "links": [],
@@ -1319,7 +1319,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 27
       },
       "id": 37,
       "panels": [],
@@ -1400,7 +1400,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 28
       },
       "id": 24,
       "links": [],
@@ -1479,7 +1479,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 35
       },
       "id": 38,
       "panels": [],
@@ -1560,7 +1560,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 36
       },
       "id": 20,
       "links": [],
@@ -1610,7 +1610,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 49
       },
       "id": 39,
       "panels": [],
@@ -1684,13 +1684,38 @@
           },
           "unit": "bytes"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "rancher-64cf6ddd96-msnvd"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 50
       },
       "id": 25,
       "links": [],
@@ -1740,7 +1765,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 57
       },
       "id": 41,
       "panels": [],
@@ -1820,7 +1845,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 58
       },
       "id": 27,
       "links": [],
@@ -1897,7 +1922,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 65
       },
       "id": 42,
       "panels": [],
@@ -1977,7 +2002,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 66
       },
       "id": 28,
       "links": [],
@@ -2026,7 +2051,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 79
       },
       "id": 43,
       "panels": [],
@@ -2053,9 +2078,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2067,7 +2089,6 @@
               "tooltip": false,
               "viz": false
             },
-            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2089,8 +2110,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2106,7 +2126,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 78
+        "y": 80
       },
       "id": 16,
       "links": [],
@@ -2121,8 +2141,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "pluginVersion": "8.0.6",
@@ -2171,7 +2190,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 85
+        "y": 87
       },
       "id": 44,
       "panels": [],
@@ -2198,9 +2217,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -2212,7 +2228,6 @@
               "tooltip": false,
               "viz": false
             },
-            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2234,8 +2249,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2251,7 +2265,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 88
       },
       "id": 30,
       "links": [],
@@ -2266,8 +2280,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "pluginVersion": "8.0.6",
@@ -2378,7 +2391,7 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2410,32 +2423,10 @@
         "current": {
           "selected": true,
           "text": [
-            "argocd",
-            "cattle-fleet-system",
-            "cattle-provisioning-capi-system",
-            "cattle-system",
-            "cert-manager",
-            "default",
-            "docker-registry",
-            "grafana",
-            "kafka",
-            "kube-system",
-            "monitoring",
-            "mw"
+            "cattle-system"
           ],
           "value": [
-            "argocd",
-            "cattle-fleet-system",
-            "cattle-provisioning-capi-system",
-            "cattle-system",
-            "cert-manager",
-            "default",
-            "docker-registry",
-            "grafana",
-            "kafka",
-            "kube-system",
-            "monitoring",
-            "mw"
+            "cattle-system"
           ]
         },
         "datasource": {
@@ -2464,7 +2455,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
