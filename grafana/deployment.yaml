@@ -24,6 +24,8 @@ spec:
           volumeMounts:
             - name: grafana-datasources
               mountPath: /etc/grafana
+            - name: grafana-config
+              mountPath: /etc/grafana
       volumes:
         - name: grafana-volume
           persistentVolumeClaim:
@@ -31,3 +33,6 @@ spec:
         - name: grafana-datasources
           configMap:
             name: grafana-datasources-cm
+        - name: grafana-config
+          configMap:
+            name: grafana-config-cm
