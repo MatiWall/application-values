@@ -24,6 +24,12 @@ spec:
           volumeMounts:
             - name: grafana-datasources
               mountPath: /etc/grafana/provisioning/datasources
+        - name: grafana-dashboard-sidecar
+          image: kiwigrid/k8s-sidecar:0.1.168
+          args:
+            - -p=3000
+            - -k=/etc/grafana/provisioning/dashboards
+            - -c=grafana-admin:admin@grafana:3000
 
       volumes:
         - name: grafana-volume
