@@ -55,18 +55,20 @@ metadata:
   name: sample-role
 rules:
 - apiGroups: [""]
-  resources: ["configmaps"]
+  resources: ["configmaps", "secrets"]
   verbs: ["get", "watch", "list"]
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: sample-acc
+  namespace: grafana
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sample-rolebind
+  namespace: grafana
 roleRef:
   kind: ClusterRole
   name: sample-role
@@ -74,5 +76,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: sample-acc
-  namespace: default
+  namespace: grafana
         
