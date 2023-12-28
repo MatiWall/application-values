@@ -7,4 +7,6 @@ metadata:
 data:
   datasources.yaml: |-
     {{ .Files.Get "./datasources.yaml" | nindent 2 }}
+  grafana.ini: |-
+    {{ .Files.Get "./grafana.ini" | nindent 2 }}
 
