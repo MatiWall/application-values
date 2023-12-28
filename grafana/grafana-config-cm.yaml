@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-datasources-cm
+  name: grafana-config-cm
   namespace: grafana
 data:
   grafana-ini: |-
