@@ -4,7 +4,7 @@ metadata:
   name: grafana-dashboard-provisioning
   namespace: grafana
 data:
-  dashboard-profisioning.yaml: |
+  dashboard-provisioning.yaml: |
     apiVersion: 1
     providers:
     - name: 'example-provider'
