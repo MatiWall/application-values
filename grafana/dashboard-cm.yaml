@@ -1,0 +1,9 @@
+# grafana-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-cm
+  namespace: grafana
+data:
+  k3s-overview.json: |-
+    {{.Files.Get "k3s-monitoring-dashboard.json"  | nindent 4 }}
