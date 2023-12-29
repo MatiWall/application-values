@@ -5,9 +5,6 @@ metadata:
   namespace: postgres
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: postgres
   template:
     metadata:
       labels:
@@ -20,8 +17,9 @@ spec:
         - name: POSTGRES_DB
           value: mydatabase
         - name: POSTGRES_USER
-          value: myuser
+          value: user
         - name: POSTGRES_PASSWORD
-          value: myuser
+          value: password
         ports:
         - containerPort: 5432
+
