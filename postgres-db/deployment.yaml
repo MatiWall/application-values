@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres-db
+  name: postgres
   namespace: postgres
 spec:
   #serviceName: postgres
@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: postgres-db
+        app: postgres
     spec:
       containers:
-        - name: postgres-db
+        - name: postgres
           image: postgres:13
           env:
             - name: POSTGRES_USER 
