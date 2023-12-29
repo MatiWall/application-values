@@ -7,6 +7,6 @@ spec:
   valuesContent: |-
     ports:
       postgres: 
-        port: 6432
+        port: 5432
         expose: true
-        exposedPort: 6432
+        exposedPort: 5432

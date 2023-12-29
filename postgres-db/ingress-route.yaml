@@ -11,5 +11,5 @@ spec:
   - match: HostSNI(`*`)
     services:
     - name: postgres-service
-      port: 6432
+      port: 5432
 
