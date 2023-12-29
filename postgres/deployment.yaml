@@ -1,9 +1,7 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: postgres-statefulset
-  labels:
-    app: postgres
+  name: postgres-deployment
 spec:
   replicas: 1
   selector:
@@ -17,6 +15,12 @@ spec:
       containers:
       - name: postgres
         image: postgres:latest
+        env:
+        - name: POSTGRES_DB
+          value: mydatabase
+        - name: POSTGRES_USER
+          value: myuser
+        - name: POSTGRES_PASSWORD
+          value: myuser
         ports:
         - containerPort: 5432
-          name: postgresdb
