@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pgadmin
+  name: postgres-ui
   namespace: postgres
 spec:
   replicas: 1
@@ -18,9 +18,9 @@ spec:
           image: dpage/pgadmin4:latest
           env:
             - name: PGADMIN_DEFAULT_EMAIL
-              value: user@domain.com
+              value: admin
             - name: PGADMIN_DEFAULT_PASSWORD
-              value: password
+              value: admin
             - name: PGADMIN_PORT
               value: "80"
           ports:
