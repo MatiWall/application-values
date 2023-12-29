@@ -13,3 +13,9 @@ data:
         access: proxy
         url: http://prometheus-service.monitoring.svc.cluster.local:80
         isDefault: true
+      - name: Postgres
+        type: postgres
+        url: postgres-service.postgres.svc.cluster.local:5432
+        user: postgres
+        secureJsonData:
+          password: 'postgres'
