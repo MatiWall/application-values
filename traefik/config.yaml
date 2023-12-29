@@ -15,5 +15,37 @@ spec:
               scheme: https
       websecure:
         address: ":443"
-      postgres:
-        address: ":5432/tcp"
+      someentrypointname:
+        address: ":222/tcp"
+
+--
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.someentrypointname.address=:222/tcp"
+
+--
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--entrypoints.someentrypointname.address=:222/tcp"
+    ports:
+    - containerPort: "222"
+      name: someentrypointname
+      protocol: TCP
