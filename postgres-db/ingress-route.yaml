@@ -6,7 +6,7 @@ metadata:
 
 spec:
   entryPoints:
-    - postgres.mw
+    - postgres-service
 
   routes:
   - match: HostSNI(`*`)
