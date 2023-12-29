@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-ui-service
+  labels:
+    app: postgres-ui
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: postgres
+  type: ClusterIP
