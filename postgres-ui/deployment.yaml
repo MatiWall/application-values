@@ -14,7 +14,7 @@ spec:
         app: postgres-ui
     spec:
       containers:
-        - name: pgadmin
+        - name: postgres-ui
           image: dpage/pgadmin4:latest
           env:
             - name: PGADMIN_DEFAULT_EMAIL
