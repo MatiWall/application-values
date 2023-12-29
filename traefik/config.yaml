@@ -18,8 +18,7 @@ spec:
       someentrypointname:
         address: ":222/tcp"
 
---
-
+---
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
@@ -34,8 +33,7 @@ spec:
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.someentrypointname.address=:222/tcp"
 
---
-
+---
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
