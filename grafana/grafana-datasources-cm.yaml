@@ -20,4 +20,5 @@ data:
         secureJsonData:
           password: 'postgres'
         jsonData:
-          database: Test
+          database: 'Test'
+          sslmode: 'disable'
