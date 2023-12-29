@@ -15,3 +15,14 @@ spec:
       port: 80
       # Here, nativeLB instructs to build the servers load balancer with the Kubernetes Service clusterIP only.
       nativeLB: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-svc
+  namespace: postgres
+spec:
+  externalName: external.domain
+  type: ExternalName
+  ports:
+    - port: 80
