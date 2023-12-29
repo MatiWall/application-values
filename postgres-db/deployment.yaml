@@ -1,11 +1,14 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres
+  name: postgres-db
   namespace: postgres
 spec:
-  #serviceName: postgres
+  serviceName: postgres
   replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
   template:
     metadata:
       labels:
@@ -24,4 +27,15 @@ spec:
           ports:
             - containerPort: 5432
               name: postgres
-          
+          volumeMounts:
+            - name: postgres-pv-claim
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-pv-claim
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
