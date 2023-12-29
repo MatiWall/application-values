@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: postgres-service
   labels:
-    app: postgres
+    app: postgres-service
+  namespace: postgres
 spec:
   ports:
     - port: 80
