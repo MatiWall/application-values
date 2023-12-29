@@ -11,7 +11,7 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
-    - name: postgres-service
+    - name: external-svc
       port: 80
       # Here, nativeLB instructs to build the servers load balancer with the Kubernetes Service clusterIP only.
       nativeLB: true
