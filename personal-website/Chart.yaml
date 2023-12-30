@@ -9,3 +9,4 @@ dependencies:
   - name: react-app
     version: 0.0.7
     repository: https://matiwall.github.io/helm-charts/
+    alias: deployment
