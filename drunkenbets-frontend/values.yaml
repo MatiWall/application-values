@@ -1,0 +1,21 @@
+# my-react-app/values.yaml
+
+
+deployment:
+  replicaCount: 1
+  image:
+    repository: docker-registry.mw/drunkenbets/frontend
+    tag: 0.0.1b1
+    pullPolicy: IfNotPresent
+
+  service:
+    name: drunkenbets-frontend
+    type: ClusterIP
+    port: 80
+
+  ingress:
+    enabled: true
+    pathType: ImplementationSpecific
+    path: /
+    url: drunkenbets.mw
+
