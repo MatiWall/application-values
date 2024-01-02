@@ -8,5 +8,5 @@ type: application
 dependencies:
   - name: react-app
     version: 0.0.8
-    repository: https://matiwall.github.io/helm-charts/
+    repository: https://matiwall.github.io/homelab.helm-charts/
     alias: deployment
