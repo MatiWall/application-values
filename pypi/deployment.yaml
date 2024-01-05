@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pypi
+  namespace: pypiserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pypiserver
+  template:
+    metadata:
+      labels:
+        app: pypiserver
+    spec:
+      containers:
+      - name: pypiserver
+        image: pypiserver/pypiserver:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PYPISERVER_PASSWORDS
+          value: "admin:adminpass,user:userpass"
+        volumeMounts:
+        - name: pypiserver-storage
+          mountPath: /data
+  volumes:
+  - name: pypiserver-storage
+    persistentVolumeClaim:
+      claimName: pypiserver-pvc
+

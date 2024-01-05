@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pypiserver-service
+  namespace: pypi
+spec:
+  entryPoints:
+  - websecure
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`pypi.mw`)
+    priority: 10
+    services:
+    - name: pypiserver-service
+      port: 80
+
