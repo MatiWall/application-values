@@ -12,6 +12,8 @@ spec:
       labels:
         app: docker-registry
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: "pi5-m1"
       containers:
       - name: registry
         image: registry:latest

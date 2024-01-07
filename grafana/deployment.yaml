@@ -14,6 +14,8 @@ spec:
         app: grafana
     spec:
       serviceAccountName: sample-acc
+      nodeSelector:
+        kubernetes.io/hostname: "pi5-m1"
       containers:
         - name: grafana
           image: grafana/grafana:latest
