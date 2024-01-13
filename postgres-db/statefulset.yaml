@@ -13,8 +13,6 @@ spec:
       labels:
         app: postgres
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: "pi5-m1"
       containers:
         - name: postgres
           image: postgres:13
@@ -24,13 +22,13 @@ spec:
             - name: POSTGRES_PASSWORD
               value: postgres
             - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
+              value: /mnt/ext1/postgresql/data/pgdata
           ports:
             - containerPort: 5432
               name: postgres
           volumeMounts:
             - name: postgres-pv-claim
-              mountPath: /var/lib/postgresql/data
+              mountPath: /mnt/ext1/postgresql/data
   volumeClaimTemplates:
     - metadata:
         name: postgres-pv-claim

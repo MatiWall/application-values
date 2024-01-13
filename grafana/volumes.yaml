@@ -11,15 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: grafana-pvc
   local:
-    path: /var/lib/grafana
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - pi5-1
+    path: /mnt/ext1/grafana
 
 ---
 apiVersion: v1
