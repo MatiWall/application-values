@@ -9,9 +9,10 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: grafana-pvc
-  local:
+   storageClassName: nfs-storage
+  nfs:
     path: /mnt/ext1/grafana
+    server: 192.168.0.11
 
 ---
 apiVersion: v1
@@ -26,5 +27,5 @@ spec:
   resources:
     requests:
       storage: 0.5Gi
-  storageClassName: grafana-pvc
+  storageClassName: nfs-storage
 
