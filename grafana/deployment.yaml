@@ -24,26 +24,26 @@ spec:
               value: admin
           volumeMounts:
             - name: grafana-datasources
-              mountPath: /mnt/ext1/grafana/provisioning/datasources
+              mountPath: /etc/grafana/provisioning/datasources
             - name: shared-volume
-              mountPath: /mnt/ext1/grafana/provisioning/dashboards
+              mountPath: /etc/grafana/provisioning/dashboards
             - name: grafana-config
-              mountPath: /mnt/ext1/grafana/grafana.ini
+              mountPath: /etc/grafana/grafana.ini
               subPath: grafana.ini
             - name: grafana-dashboard-provisioning
-              mountPath: /mnt/ext1/grafana/provisioning/dashboards/dashboard-provisioning.yaml
+              mountPath: /etc/grafana/provisioning/dashboards/dashboard-provisioning.yaml
               subPath: dashboard-provisioning.yaml
               
         - name: grafana-dashboard-sidecar
           image: kiwigrid/k8s-sidecar:latest
           volumeMounts:
             - name: shared-volume
-              mountPath: /mnt/ext1/grafana/provisioning/dashboards
+              mountPath: /etc/grafana/provisioning/dashboards
           env:
           - name: LABEL
             value: "grafana_dashboard"
           - name: FOLDER
-            value: /mnt/ext1/grafana/provisioning/dashboards
+            value: /etc/grafana/provisioning/dashboards
           - name: RESOURCE
             value: both
       volumes:
