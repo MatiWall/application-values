@@ -21,7 +21,7 @@ spec:
         - containerPort: 5000
         volumeMounts:
         - name: my-storage
-          mountPath: /var/lib/registry
+          mountPath: /mnt/ext1/registry
         env:
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
           value: "[http://docker-registry-ui.mw]"
