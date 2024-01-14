@@ -23,4 +23,10 @@ spec:
         env:
         - name: discovery.type
           value: single-node
-
+        volumeMounts:
+          - name: "elasticsearch-pv"
+            mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-pv
+          persistantVolumeClaim:
+            claimName: elasticsearch-pv-claim
