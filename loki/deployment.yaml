@@ -14,7 +14,7 @@ spec:
       labels:
         app: loki
     spec:
-      serviceAccountName: loki-service-account
+      #serviceAccountName: loki-service-account
       containers:
         - name: loki
           image: grafana/loki:latest
