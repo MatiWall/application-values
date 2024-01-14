@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pypi
-  namespace: pypiserver
+  name: pypiserver
+  namespace: pypi
 spec:
   replicas: 1
   selector:
