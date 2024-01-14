@@ -12,7 +12,7 @@ data:
           kvstore:
             store: inmemory
           replication_factor: 1
-      chunk_idle_period: 1s
+      chunk_idle_period: 15m
       max_transfer_retries: 0
 
     compactor:
@@ -32,7 +32,7 @@ data:
       trace:
         backend: local
         local:
-          path: /etc/tempo/data
+          directory: /etc/tempo/data
 
     limits:
       per_trace:
