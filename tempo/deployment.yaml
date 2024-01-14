@@ -18,3 +18,10 @@ spec:
         image: grafana/tempo:latest
         ports:
         - containerPort: 3100
+      volumeMounts:
+        - name: tempo-volume
+          mountPath: /etc/tempo
+  volumes:
+    - name: grafana-volume
+      persistentVolumeClaim:
+        claimName: grafana-pvc
