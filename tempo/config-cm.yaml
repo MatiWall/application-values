@@ -28,10 +28,11 @@ data:
     query:
       frontend: http://tempo-frontend:3100
 
-    store:
-      backend: local
-      local:
-        directory: /etc/tempo/data
+    storage:
+      trace:
+        backend: local
+          local:
+            path: /etc/tempo/data
 
     limits:
       per_trace:
