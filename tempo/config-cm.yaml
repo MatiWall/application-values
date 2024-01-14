@@ -11,7 +11,7 @@ data:
         ring:
           kvstore:
             store: inmemory
-          replicationFactor: 1
+          replication_factor: 1
       chunk_idle_period: 1s
       max_transfer_retries: 0
 
