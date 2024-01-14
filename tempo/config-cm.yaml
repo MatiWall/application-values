@@ -24,15 +24,15 @@ data:
       ingesturl: http://tempo-ingester:9095
       queryrangeurl: http://tempo-query:3100
       dependson: [tempo-query, tempo-ingester]
-
+    
     query:
       frontend: http://tempo-frontend:3100
 
     storage:
       trace:
         backend: local
-          local:
-            path: /etc/tempo/data
+        local:
+          path: /etc/tempo/data
 
     limits:
       per_trace:
