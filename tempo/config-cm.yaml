@@ -7,11 +7,11 @@ data:
   tempo-config.yaml: |-
     ingester:
       lifecycler:
-        address: 0.0.0.0:9095
         ring:
           replication_factor: 1
           port: 8000
     compactor:
+      disable: true
       compaction:
         period: 3h
     frontend:
