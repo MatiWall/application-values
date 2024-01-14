@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: prometheus-storage
+  storageClassName: nfs-storage
   nfs:
     path: /mnt/ext1/prometheus
     server: 192.168.0.11
@@ -22,11 +22,11 @@ metadata:
   namespace: monitoring
 spec:
   accessModes:
-    - ReadWriteMany  # Must match the access mode specified in the PV
+    - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
       storage: 5Gi
-  storageClassName: prometheus-storage
+  storageClassName: nfs-storage
 
 
