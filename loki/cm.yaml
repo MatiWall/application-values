@@ -7,4 +7,13 @@ metadata:
 data:
   config.yaml: |
     auth_enabled: false
+    schema_config:
+      configs:
+        - from: 2022-01-01
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
 
