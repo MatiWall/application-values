@@ -24,8 +24,8 @@ spec:
         volumeMounts:
         - name: pypiserver-storage
           mountPath: /data
-  volumes:
-  - name: pypiserver-storage
-    persistentVolumeClaim:
-      claimName: pypiserver-pvc
+      volumes:
+        - name: pypiserver-storage
+          persistentVolumeClaim:
+            claimName: pypi-storage-pvc
 
