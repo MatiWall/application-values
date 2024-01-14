@@ -29,13 +29,3 @@ spec:
           volumeMounts:
             - name: postgres-pv-claim
               mountPath: /mnt/ext1/postgresql/data
-  volumeClaimTemplates:
-    - metadata:
-        name: postgres-pv-claim
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 20Gi  # Must match the storage size defined in the PVC
-        storageClassName: nfs-storage
