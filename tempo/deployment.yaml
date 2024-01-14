@@ -18,16 +18,16 @@ spec:
         image: grafana/tempo:latest
         ports:
         - containerPort: 3100
-      volumeMounts:
+        volumeMounts:
+          - name: tempo-volume
+            mountPath: /etc/tempo/data
+          - name: tempo-config-volume
+            mountPath: /etc/tempo/tempo-config.yaml
+            subPath: tempo-config.yaml
+      volumes:
         - name: tempo-volume
-          mountPath: /etc/tempo/data
+          persistentVolumeClaim:
+            claimName: tempo-pvc
         - name: tempo-config-volume
-          mountPath: /etc/tempo/tempo-config.yaml
-          subPath: tempo-config.yaml
-    volumes:
-      - name: tempo-volume
-        persistentVolumeClaim:
-          claimName: tempo-pvc
-      - name: tempo-config-volume
-        configMap:
-          name: tempo-config
+          configMap:
+            name: tempo-config
