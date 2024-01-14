@@ -15,8 +15,6 @@ spec:
       labels:
         app: prometheus-server
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: "pi5-m1"
       containers:
         - name: prometheus
           image: prom/prometheus
@@ -34,4 +32,5 @@ spec:
             name: prometheus-server-conf
   
         - name: prometheus-storage-volume
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: prometheus-storage-pvc
