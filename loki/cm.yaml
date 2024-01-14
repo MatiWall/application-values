@@ -16,6 +16,6 @@ data:
           index:
             prefix: index_
             period: 24h
-   compactor:
-     working_directory: /var/loki/compactor
+    compactor:
+      working_directory: /var/loki/compactor
 
