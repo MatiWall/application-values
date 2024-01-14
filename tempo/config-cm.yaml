@@ -9,4 +9,4 @@ data:
       trace:
         backend: local
         local:
-          directory: /etc/tempo/data
+          path: /etc/tempo/data
