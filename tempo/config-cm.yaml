@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tempo-config
+  namespace: monitoring
+data:
+  tempo-config.yaml: |-
+    ingester:
+      lifecycler:
+        address: 0.0.0.0:9095
+        ring:
+          kvstore:
+            store: inmemory
+          replicationFactor: 1
+      chunk_idle_period: 1s
+      max_transfer_retries: 0
+
+    compactor:
+      compaction:
+        period: 3h
+
+    frontend:
+      listen: 0.0.0.0:3100
+      ingesturl: http://tempo-ingester:9095
+      queryrangeurl: http://tempo-query:3100
+      dependson: [tempo-query, tempo-ingester]
+
+    query:
+      frontend: http://tempo-frontend:3100
+
+    store:
+      backend: local
+      local:
+        directory: /etc/tempo/data
+
+    limits:
+      per_trace:
+        kv: 100
+      ingester: 0
