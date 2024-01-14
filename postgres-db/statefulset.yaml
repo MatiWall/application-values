@@ -37,4 +37,5 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 10Gi
+            storage: 20Gi  # Must match the storage size defined in the PVC
+        storageClassName: nfs-storage
