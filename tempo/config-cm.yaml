@@ -14,26 +14,21 @@ data:
           replication_factor: 1
       chunk_idle_period: 15m
       max_transfer_retries: 0
-
     compactor:
       compaction:
         period: 3h
-
     frontend:
       listen: 0.0.0.0:3100
       ingesturl: http://tempo-ingester:9095
       queryrangeurl: http://tempo-query:3100
       dependson: [tempo-query, tempo-ingester]
-    
     query:
       frontend: http://tempo-frontend:3100
-
     storage:
       trace:
         backend: local
         local:
           directory: /etc/tempo/data
-
     limits:
       per_trace:
         kv: 100
