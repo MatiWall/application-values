@@ -24,10 +24,10 @@ spec:
         - name: tempo-config-volume
           mountPath: /etc/tempo/tempo-config.yaml
           subPath: tempo-config.yaml
-  volumes:
-    - name: tempo-volume
-      persistentVolumeClaim:
-        claimName: tempo-pvc
-    - name: tempo-config-volume
-      configMap:
-        name: tempo-config
+    volumes:
+      - name: tempo-volume
+        persistentVolumeClaim:
+          claimName: tempo-pvc
+      - name: tempo-config-volume
+        configMap:
+          name: tempo-config
