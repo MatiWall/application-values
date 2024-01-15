@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pypiserver
-        image: docker-registry.mw/personal-website:0.0.1
+        image: docker-registry.mw/pypiserver:0.0.1
         ports:
         - containerPort: 8080
         env:
