@@ -18,6 +18,7 @@ spec:
         image: docker-registry.mw/pypiserver:0.0.1
         ports:
         - containerPort: 8080
+          name: http
         env:
         - name: PYPISERVER_PASSWORDS
           value: "admin:adminpass,user:userpass"
