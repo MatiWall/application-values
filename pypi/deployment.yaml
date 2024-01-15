@@ -16,6 +16,7 @@ spec:
       containers:
       - name: pypiserver
         image: docker-registry.mw/pypiserver:0.0.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
           name: http
