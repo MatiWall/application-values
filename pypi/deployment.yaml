@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pypiserver
-        image: pypiserver/pypiserver:latest
+        image: docker-registry.mw/personal-website:0.0.1
         ports:
         - containerPort: 8080
         env:
@@ -23,7 +23,7 @@ spec:
           value: "admin:adminpass,user:userpass"
         volumeMounts:
         - name: pypiserver-storage
-          mountPath: /data
+          mountPath: /data/packages
       volumes:
         - name: pypiserver-storage
           persistentVolumeClaim:
