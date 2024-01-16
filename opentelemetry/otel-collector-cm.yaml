@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: otel-collector-config
+  namespace: monitoring
 data:
   otel-collector-config.yaml: |
     receivers:
@@ -13,18 +14,26 @@ data:
       batch:
 
     exporters:
-      elasticsearch:
-        endpoint: "http://elasticsearch:9200"
-        index: "otel-logs"
+      loki:
+        endpoint: "http://loki:3100/loki/api/v1/push"
+
+      tempo:
+        endpoint: "http://tempo:3100"
+
+      prometheus:
+        endpoint: "http://prometheus:9090"
 
     service:
       pipelines:
         metrics:
           receivers: [otlp]
           processors: [batch]
-          exporters: [elasticsearch]
+          exporters: [prometheus]
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [elasticsearch]
----
+          exporters: [tempo]
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [loki]

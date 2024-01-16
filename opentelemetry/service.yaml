@@ -1,0 +1,15 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: otelcollector-service
+  namespace: monitoring
+spec:
+  ports:
+  - name: grpc-otlp
+    port: 4317
+    protocol: TCP
+    targetPort: 4317
+  selector:
+    app.kubernetes.io/name: otelcollector-service
+  type: ClusterIP
