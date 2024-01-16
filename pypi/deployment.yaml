@@ -13,11 +13,9 @@ spec:
       labels:
         app: pypiserver
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: pi5-m1
       containers:
       - name: pypiserver
-        image: docker-registry.mw/pypiserver:0.0.1
+        image: docker-registry.mw/pypiserver:0.0.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
