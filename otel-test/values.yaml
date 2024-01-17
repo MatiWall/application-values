@@ -1,0 +1,10 @@
+# my-react-app/values.yaml
+
+
+cronjob:
+  schedule: "*/2 * * * *"
+  image:
+    repository: docker-registry.mw/personal-website
+    tag: 0.0.3
+    pullPolicy: IfNotPresent
+
