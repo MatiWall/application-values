@@ -11,5 +11,5 @@ spec:
     protocol: TCP
     targetPort: 4317
   selector:
-    app.kubernetes.io/name: otel-collector
+    app: otel-collector
   type: ClusterIP
