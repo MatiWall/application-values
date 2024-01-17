@@ -3,6 +3,7 @@
 
 cronjob:
   schedule: "*/2 * * * *"
+  suspend: true
   image:
     repository: docker-registry.mw/otel-test
     tag: 0.0.1
