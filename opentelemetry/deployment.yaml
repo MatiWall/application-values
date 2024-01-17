@@ -16,13 +16,15 @@ spec:
       containers:
       - name: otel-collector
         image: otel/opentelemetry-collector:latest
-
+        command:
+          - "--config=/etc/otel/otel-collector-config.yaml"
         ports:
           - name: http
             containerPort: 4317
         volumeMounts:
         - name: config-volume
-          mountPath: /etc/otel
+          mountPath: /etc/otel/otel-collector-config.yaml
+          subPath: otel-collector-config.yaml
       volumes:
       - name: config-volume
         configMap:
