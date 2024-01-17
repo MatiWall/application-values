@@ -15,13 +15,13 @@ data:
 
     exporters:
       loki:
-        endpoint: "http://loki:3100/loki/api/v1/push"
+        endpoint: "http://loki/loki/api/v1/push"
 
       otlphttp:
-        endpoint: "http://tempo:3100"
+        endpoint: "http://tempo"
 
       prometheus:
-        endpoint: "prometheus:9090"
+        endpoint: "http://prometheus"
 
     service:
       pipelines:
