@@ -7,6 +7,6 @@ version: 1.1.0
 type: application
 dependencies:
   - name: cronjob
-    version: 0.0.2
+    version: 0.0.3
     repository: https://matiwall.github.io/homelab.helm-charts/
     alias: cronjob
