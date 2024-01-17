@@ -4,7 +4,7 @@
 cronjob:
   schedule: "*/2 * * * *"
   image:
-    repository: docker-registry.mw/personal-website
-    tag: 0.0.3
+    repository: docker-registry.mw/otel-test
+    tag: 0.0.1
     pullPolicy: IfNotPresent
 
