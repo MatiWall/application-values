@@ -21,7 +21,7 @@ data:
         endpoint: "http://tempo:80"
 
       prometheus:
-        endpoint: "http://prometheus:80"
+        endpoint: "prometheus:80"
 
     service:
       pipelines:
