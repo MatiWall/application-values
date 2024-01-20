@@ -27,8 +27,13 @@ spec:
           volumeMounts:
             - name: loki-config
               mountPath: /etc/loki
+            - name: loki-pv
+              mountPath: /var/lib/loki/data
       volumes:
         - name: loki-config
           configMap:
             name: loki-config
+        - name: loki-pv
+          persistantVolumeClaim:
+            claimName: loki-pv-claim
 
