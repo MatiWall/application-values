@@ -15,10 +15,10 @@ data:
 
     exporters:
       loki:
-        endpoint: "http://loki-service.monitoring.svc.cluster.local:80"
+        endpoint: "http://loki-service.monitoring.svc.cluster.local:80/loki/api/v1/push"
 
       otlphttp:
-        endpoint: "http://tempo-service.monitoring.svc.cluster.local:80"
+        endpoint: "http://tempo-service.monitoring.svc.cluster.local:80/v1/traces"
 
       prometheus:
         endpoint: "0.0.0.0:8889"
