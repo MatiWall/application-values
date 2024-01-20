@@ -28,13 +28,19 @@ data:
       pipelines:
         metrics:
           receivers: [otlp]
-          processors: [batch]
+          processors:
+            - k8sattributes
+            - batch
           exporters: [prometheus]
         traces:
           receivers: [otlp]
-          processors: [batch]
+          processors:
+            - k8sattributes
+            - batch
           exporters: [otlp]
         logs:
           receivers: [otlp]
-          processors: [batch]
+          processors:
+            - k8sattributes
+            - batch
           exporters: [loki]
