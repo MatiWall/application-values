@@ -22,3 +22,10 @@ data:
         jsonData:
           database: 'Test'
           sslmode: 'disable'
+      - name: Tempo
+        type: tempo
+        url: tempo-service.monitoring.svc.cluster.local:80
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki-service.monitoring.svc.cluster.local:80
