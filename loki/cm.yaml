@@ -16,7 +16,7 @@ data:
     common:
       path_prefix: /loki
       storage:
-        nfs:
+        filesystem:
           chunks_directory: /loki/chunks
           rules_directory: /loki/rules
       replication_factor: 1
