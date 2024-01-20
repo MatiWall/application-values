@@ -18,7 +18,7 @@ data:
         endpoint: "http://loki-service.monitoring.svc.cluster.local:80/loki/api/v1/push"
 
       otlp:
-        endpoint: "http://tempo-service.monitoring.svc.cluster.local:80"
+        endpoint: "tempo-service.monitoring.svc.cluster.local:4317"
         tls:
           insecure: true
       prometheus:

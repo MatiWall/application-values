@@ -11,6 +11,14 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 3200
+    - name: otlp-grpc
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: otlp-http
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
   selector:
     app: tempo
   type: ClusterIP
