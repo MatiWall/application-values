@@ -12,6 +12,8 @@ data:
 
     processors:
       batch:
+      k8sattributes:
+        passthrough: true
 
     exporters:
       loki:
