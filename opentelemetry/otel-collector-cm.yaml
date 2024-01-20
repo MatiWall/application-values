@@ -13,6 +13,7 @@ data:
     processors:
       batch:
       k8sattributes:
+      k8sattributes/2:
         auth_type: "serviceAccount"
         passthrough: false
         extract:
