@@ -2,6 +2,12 @@
 
 
 cronjob:
+  global:
+    environment: Test
+    system: Testing
+    application: otel-test
+    deployable_unit: test
+
   schedule: "*/2 * * * *"
   suspend: true
   image:
