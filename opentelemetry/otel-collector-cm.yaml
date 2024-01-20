@@ -21,7 +21,7 @@ data:
         endpoint: "tempo-service.monitoring.svc.cluster.local:80"
 
       prometheus:
-        endpoint: "0.0.0.0:80"
+        endpoint: "0.0.0.0:8889"
 
     service:
       pipelines:
