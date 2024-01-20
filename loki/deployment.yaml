@@ -28,7 +28,7 @@ spec:
             - name: loki-config
               mountPath: /etc/loki
             - name: loki-pv
-              mountPath: /var/lib/loki/data
+              mountPath: /var/lib/loki
       volumes:
         - name: loki-config
           configMap:
