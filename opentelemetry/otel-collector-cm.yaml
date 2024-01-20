@@ -15,7 +15,7 @@ data:
 
     exporters:
       loki:
-        endpoint: "loki-service.monitoring.svc.cluster.local:80/loki/api/v1/push"
+        endpoint: "loki-service.monitoring.svc.cluster.local:80"
 
       otlphttp:
         endpoint: "tempo-service.monitoring.svc.cluster.local:80"
