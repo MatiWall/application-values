@@ -33,7 +33,7 @@ data:
       - job_name: 'otel-collector'
         scrape_interval: 15s
         static_configs:
-          - targets: ['otelcollector-service.monitoring.svc.cluster.local:8889']
+          - targets: ['otelcollector-service.monitoring.svc.cluster.local:80']
       - job_name: 'node-exporter'
         kubernetes_sd_configs:
           - role: endpoints
