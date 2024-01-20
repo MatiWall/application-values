@@ -21,7 +21,7 @@ data:
         endpoint: "tempo-service.monitoring.svc.cluster.local:3100"
 
       prometheus:
-        endpoint: "prometheus-service.monitoring.svc.cluster.local:9090"
+        endpoint: "prometheus-service.monitoring.svc.cluster.local:9090/metrics"
 
     service:
       pipelines:
