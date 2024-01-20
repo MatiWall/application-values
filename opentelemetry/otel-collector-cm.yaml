@@ -17,7 +17,7 @@ data:
       loki:
         endpoint: "http://loki-service.monitoring.svc.cluster.local:80/loki/api/v1/push"
 
-      otlp:
+      otlphttp:
         endpoint: "http://tempo-service.monitoring.svc.cluster.local:80"
 
       prometheus:
@@ -32,7 +32,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [otlp]
+          exporters: [otlphttp]
         logs:
           receivers: [otlp]
           processors: [batch]
