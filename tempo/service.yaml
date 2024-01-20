@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: tempo-service
   labels:
-    app: tempo
+    app: tempo-service
   namespace: monitoring
 spec:
   ports:
