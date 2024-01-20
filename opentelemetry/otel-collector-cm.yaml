@@ -32,7 +32,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [otlphttp]
+          exporters: [otlp]
         logs:
           receivers: [otlp]
           processors: [batch]
