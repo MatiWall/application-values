@@ -28,7 +28,6 @@ spec:
             - name: loki-config
               mountPath: /etc/loki
             - name: loki-pv
-              defaultMode: 420
               mountPath: /var/lib/loki/data
       volumes:
         - name: loki-config
