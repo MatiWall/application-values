@@ -20,7 +20,7 @@ spec:
         image: grafana/tempo:latest
         args: [ "-config.file=/etc/tempo/tempo-config.yaml" ]
         ports:
-        - containerPort: 80
+        - containerPort: 3200
         volumeMounts:
           - name: tempo-volume
             mountPath: /etc/tempo/data

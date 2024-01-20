@@ -5,8 +5,28 @@ metadata:
   namespace: monitoring
 data:
   tempo-config.yaml: |-
+    server:
+      http_listen_port: 3200
+    
+    compactor:
+      compaction:
+        block_retention: 100h
+    
+    metrics_generator:
+      storage:
+        path: /tmp/tempo/generator/wal
+        remote_write:
+          - url: http://prometheus-service.monitoring.svc.local:80/api/v1/write
+            send_exemplars: true
+        
+    
     storage:
       trace:
         backend: local
         local:
           path: /etc/tempo/data
+    
+    overrides:
+      defaults:
+        metrics_generator:
+          processors: [service-graphs, span-metrics]
