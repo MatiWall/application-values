@@ -13,7 +13,7 @@ data:
     processors:
       batch:
       k8sattributes:
-        auth_type: "serviceAccount
+        auth_type: "serviceAccount"
         passthrough: false
         extract:
           - k8s.pod.name
