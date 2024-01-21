@@ -18,7 +18,15 @@ spec:
       - name: kafka
         image: bitnami/kafka:latest
         env:
-        - name: KAFKA_ADVERTISED_LISTENERS
-          value: "PLAINTEXT://kafka:9092"
+          - name: KAFKA_KRAFT_MODE
+            value: "true"
+          - name: KAFKA_KRAFT_BROKER_ID
+            valueFrom:
+              fieldRef:
+                fieldPath: index
+          - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
+            value: "false"
+          - name: KAFKA_PORT
+            value: "9092"
         ports:
         - containerPort: 9092
