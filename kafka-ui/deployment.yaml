@@ -22,7 +22,7 @@ spec:
         - name: KAFKA_CLUSTERS_0_NAME
           value: "0"
         - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-          value: kafka-service.kafka.svc.cluster.local:80
+          value: kafka-service:80
         - name: DYNAMIC_CONFIG_ENABLED
           value: "true"
         imagePullPolicy: Always
