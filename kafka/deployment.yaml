@@ -32,5 +32,9 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.uid
+          - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
+            value: "0"
+          - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
+            value: "PLAINTEXT"
         ports:
         - containerPort: 9092
