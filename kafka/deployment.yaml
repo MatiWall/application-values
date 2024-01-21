@@ -20,10 +20,6 @@ spec:
         env:
           - name: KAFKA_KRAFT_MODE
             value: "true"
-          - name: KAFKA_KRAFT_BROKER_ID
-            valueFrom:
-              fieldRef:
-                fieldPath: index
           - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
             value: "false"
           - name: KAFKA_PORT
