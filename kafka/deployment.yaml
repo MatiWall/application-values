@@ -18,26 +18,18 @@ spec:
       - name: kafka
         image: bitnami/kafka:latest
         env:
-          - name: KAFKA_MODE
-            value: "raft"
-          - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
-            value: "false"
-          - name: KAFKA_PORT
-            value: "9092"
-          - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
-            value: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-          - name: KAFKA_CFG_PROCESS_ROLES
-            value: controller,broker
           - name: KAFKA_CFG_NODE_ID
             value: "0"
-          - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
-            value: "0@kafka-0:9092"
-          - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
-            value: "CONTROLLER"
+          - name: KAFKA_CFG_PROCESS_ROLES
+            value: "controller,broker"
           - name: KAFKA_CFG_LISTENERS
             value: "PLAINTEXT://:9092,CONTROLLER://:9093"
-          - name: KAFKA_CFG_ADVERTISED_LISTENERS
-            value: "PLAINTEXT://kafka-0:9092,CONTROLLER://kafka-0:9093"
+          - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
+            value: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+          - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
+            value: "0@kafka-0:9093"  # Assuming the pod name is kafka-0
+          - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
+            value: "CONTROLLER"
         ports:
         - containerPort: 9092
-        - containerPort: 9093  # Add port for controller listener
+        - containerPort: 9093  # Port for controller listener
