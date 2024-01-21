@@ -18,8 +18,8 @@ spec:
       - name: kafka
         image: bitnami/kafka:latest
         env:
-          - name: KAFKA_KRAFT_MODE
-            value: "true"
+          - name: KAFKA_MODE
+            value: "raft"
           - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
             value: "false"
           - name: KAFKA_PORT
