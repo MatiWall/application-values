@@ -21,12 +21,12 @@ spec:
         - name: loki
           image: grafana/loki:latest
           args:
-            - -config.file=/etc/loki/config.yaml
+            - -config.file=/tmp/loki/config.yaml
           ports:
             - containerPort: 3100
           volumeMounts:
             - name: loki-config
-              mountPath: /etc/loki
+              mountPath: /tmp/loki
             - name: loki-pv
               mountPath: /etc/loki
       volumes:
