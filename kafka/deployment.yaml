@@ -19,20 +19,18 @@ spec:
         image: bitnami/kafka:latest
         env:
           - name: KAFKA_MODE
-            value: "kraft"
+            value: "raft"
           - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
             value: "false"
           - name: KAFKA_PORT
             value: "9092"
           - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
             value: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+          - name: KAFKA_CFG_PROCESS_ROLES
+            value: controller,broker
           - name: KAFKA_CFG_NODE_ID
             valueFrom:
               fieldRef:
-                fieldPath: metadata.uid
-          - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
-            value: "0"
-          - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
-            value: "PLAINTEXT"
+                fieldPath: metadata.uid9
         ports:
         - containerPort: 9092
