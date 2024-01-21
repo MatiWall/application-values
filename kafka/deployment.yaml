@@ -26,5 +26,7 @@ spec:
             value: "9092"
           - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
             value: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+          - name: KAFKA_CFG_PROCESS_ROLES
+            value: controller,broker
         ports:
         - containerPort: 9092
