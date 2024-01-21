@@ -36,5 +36,7 @@ spec:
             value: "0"
           - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
             value: "PLAINTEXT"
+          - name: KAFKA_CFG_LISTENERS
+            value: "PLAINTEXT://:9092"
         ports:
         - containerPort: 9092
