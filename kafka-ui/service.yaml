@@ -4,7 +4,7 @@ metadata:
   name: kafka-ui-service
   namespace: kafka
   labels:
-    app: kafka-service
+    app: kafka-ui-service
 spec:
   ports:
     - port: 80
