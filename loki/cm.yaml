@@ -7,14 +7,15 @@ metadata:
 data:
   config.yaml: |
     auth_enabled: false
-    storage_config:
-      filesystem:
-        directory: /var/lib/loki/data
     server:
       http_listen_port: 3100
     
     common:
-      path_prefix: /loki
+      path_prefix: /etc/loki
+      storage:
+        filesystem:
+          chunks_directory: /etc/loki/chunks
+          rules_directory: /etc/loki/rules
       replication_factor: 1
       ring:
         kvstore:
