@@ -11,7 +11,7 @@ data:
       http_listen_port: 3100
     
     common:
-      path_prefix: /etc/loki
+      path_prefix: /var/lib/loki
       storage:
         filesystem:
           chunks_directory: /var/lib/loki/chunks
