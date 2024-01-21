@@ -36,5 +36,7 @@ spec:
             value: "PLAINTEXT"
           - name: KAFKA_CFG_LISTENERS
             value: "PLAINTEXT://:9092"
+          - name: KAFKA_CFG_ADVERTISED_LISTENERS
+            value: "PLAINTEXT://kafka-0:9092"  # Use the service DNS name
         ports:
         - containerPort: 9092
