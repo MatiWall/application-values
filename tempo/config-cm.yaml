@@ -15,7 +15,7 @@ data:
     
     metrics_generator:
       storage:
-        path: /tmp/tempo/generator/wal
+        path: /etc/tempo/generator/wal
         remote_write:
           - url: http://prometheus-service.monitoring.svc.local:80/api/v1/write
             send_exemplars: true
@@ -25,7 +25,9 @@ data:
       trace:
         backend: local
         local:
-          path: /etc/tempo/data
+          path: /etc/tempo/blocks
+        wal: 
+          path: /etc/tempo/wal
     
     overrides:
       defaults:
