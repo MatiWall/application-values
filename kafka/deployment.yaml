@@ -34,10 +34,10 @@ spec:
             value: "true"
           - name: KAFKA_ADVERTISED_HOST_NAME
             value: "kafka.mw"
-          - name: KAFKA_ADVERTISED_LISTENERS
-            value: "INTERNAL://kafka-0:29092,EXTERNAL://kafka.mw:9092"
-          - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-            value: "EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT"
+#          - name: KAFKA_ADVERTISED_LISTENERS
+#            value: "INTERNAL://kafka-0:29092,EXTERNAL://kafka.mw:9092"
+#          - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+#            value: "EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT"
           - name: KAFKA_MESSAGE_MAX_BYTES
             value: "1000000"
         ports:
