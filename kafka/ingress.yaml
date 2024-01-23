@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - kafka
   routes:
-  - match: HostSNI(`kafka.mw`)
+  - match: HostSNI(`*`)
     services:
     - name: kafka
       port: 9092
