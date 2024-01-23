@@ -32,6 +32,10 @@ spec:
             value: "CONTROLLER"
           - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
             value: "true"
+          - name: KAFKA_ADVERTISED_HOST_NAME
+            value: "kafka"
+          - name: KAFKA_MESSAGE_MAX_BYTES
+            value: "1000000"
         ports:
         - containerPort: 9092
         - containerPort: 9093  # Port for controller listener
