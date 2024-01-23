@@ -10,15 +10,6 @@ spec:
         port: 5432
         expose: true
         exposedPort: 5432
----
-apiVersion: helm.cattle.io/v1
-kind: HelmChartConfig
-metadata:
-  name: traefik
-  namespace: kube-system
-spec:
-  valuesContent: |-
-    ports:
       kafka: 
         port: 9092
         expose: true
