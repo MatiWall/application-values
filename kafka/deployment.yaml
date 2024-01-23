@@ -33,7 +33,7 @@ spec:
           - name: KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE
             value: "true"
           - name: KAFKA_ADVERTISED_HOST_NAME
-            value: "kafka"
+            value: "kafka.mw"
           - name: KAFKA_MESSAGE_MAX_BYTES
             value: "1000000"
         ports:
