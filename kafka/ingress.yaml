@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kafka-ingressroute
+  namespace: kafka
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`kafka.mw`)  # Set your desired hostname
+    kind: Rule
+    services:
+    - name: kafka
+      port: 9092
