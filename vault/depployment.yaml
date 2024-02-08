@@ -1,0 +1,36 @@
+# vault-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+  namespace: vault
+  labels:
+    app: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      serviceAccountName: vault-service-account
+      containers:
+      - name: vault
+        image: vault:latest # Use the appropriate Vault image
+        ports:
+        - containerPort: 8200
+        env:
+        - name: VAULT_ADDR
+          value: "http://127.0.0.1:8200" # Adjust this accordingly
+        - name: VAULT_DEV_ROOT_TOKEN_ID
+          value: "your-root-token" # Set your desired root token
+        volumeMounts:
+        - name: vault-data
+          mountPath: /vault/data
+      volumes:
+      - name: vault-data
+        persistentVolumeClaim:
+          claimName: vault-pvc
