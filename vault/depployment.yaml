@@ -19,7 +19,7 @@ spec:
       serviceAccountName: vault-service-account
       containers:
       - name: vault
-        image: vault:latest # Use the appropriate Vault image
+        image: vault:1.13.3 # Use the appropriate Vault image
         ports:
         - containerPort: 8200
         env:
