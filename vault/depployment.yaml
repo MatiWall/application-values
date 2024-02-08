@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: vault
   namespace: vault
-  labels:
-    app: vault
 spec:
   replicas: 1
   selector:
@@ -24,7 +22,7 @@ spec:
         - containerPort: 8200
         env:
         - name: VAULT_ADDR
-          value: "http://127.0.0.1:8200" # Adjust this accordingly
+          value: "http://0.0.0.0:8200" # Adjust this accordingly
         - name: VAULT_DEV_ROOT_TOKEN_ID
           value: "your-root-token" # Set your desired root token
         volumeMounts:
