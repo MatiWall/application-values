@@ -1,0 +1,39 @@
+kind: Deployment
+metadata:
+  name: vault-agent-injector
+  labels:
+    app.kubernetes.io/name: vault-agent-injector
+    component: webhook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vault-agent-injector
+      component: webhook
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: vault-agent-injector
+        component: webhook
+    spec:
+      serviceAccountName: vault-agent-injector
+      containers:
+        - name: sidecar-injector
+          image: "hashicorp/vault-k8s:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: AGENT_INJECT_LISTEN
+              value: ":8080"
+            - name: AGENT_INJECT_LOG_LEVEL
+              value: "info"
+            - name: AGENT_INJECT_VAULT_ADDR
+              value: http://vault.vault.svc:8200
+            - name: AGENT_INJECT_VAULT_IMAGE
+              value: "vault:latest"
+            - name: AGENT_INJECT_TLS_AUTO
+              value: vault-example-agent-injector-cfg
+            - name: AGENT_INJECT_TLS_AUTO_HOSTS
+              value: vault-agent-injector-svc,vault-agent-injector-svc.vault,vault-agent-injector-svc.vault.svc
+          args:
+            - agent-inject
+            - 2>&1
