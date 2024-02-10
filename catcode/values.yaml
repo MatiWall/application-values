@@ -9,7 +9,7 @@ deployment:
     pullPolicy: IfNotPresent
 
   service:
-    name: my-react-app
+    name: catcode-api-service
     type: ClusterIP
     port: 80
 
