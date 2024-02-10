@@ -17,5 +17,5 @@ deployment:
     enabled: true
     pathType: ImplementationSpecific
     path: /
-    url: catcode-api.com
+    url: catcode-api.mw
 
