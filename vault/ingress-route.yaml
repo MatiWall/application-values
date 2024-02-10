@@ -12,6 +12,6 @@ spec:
     match: Host(`vault.mw`)
     priority: 10
     services:
-    - name: vault
+    - name: vault-service
       port: 80
 
