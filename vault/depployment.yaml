@@ -84,11 +84,3 @@ spec:
               name: https-internal
             - containerPort: 8202
               name: http-rep
-          readinessProbe:
-            exec:
-              command: ["/bin/sh", "-ec", "vault status -tls-skip-verify"]
-#            failureThreshold: 2
-#            initialDelaySeconds: 5
-#            periodSeconds: 5
-#            successThreshold: 1
-#            timeoutSeconds: 3
