@@ -4,6 +4,7 @@ metadata:
   name: vault-agent-injector-binding
   labels:
     app.kubernetes.io/name: vault-agent-injector
+    app.kubernetes.io/instance: vault  
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -11,4 +12,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: vault-agent-injector
-  namespace: vault
+  namespace: default
