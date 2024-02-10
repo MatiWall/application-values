@@ -1,13 +1,49 @@
-# vault-service.yaml
+# Service for Vault Server
 apiVersion: v1
 kind: Service
 metadata:
-  name: vault-service
+  name: vault
   namespace: vault
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault
 spec:
-  selector:
-    app: vault
+  type: NodePort  
+  publishNotReadyAddresses: true
   ports:
-    - port: 80
+    - name: http
+      port: 8200
       targetPort: 8200
-  type: ClusterIP
+      nodePort: 32000
+    - name: https-internal
+      port: 8201
+      targetPort: 8201
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault
+    component: server
+
+---
+# Headless Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-internal
+  namespace: vault
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - name: "http"
+      port: 8200
+      targetPort: 8200
+    - name: https-internal
+      port: 8201
+      targetPort: 8201
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault
+    component: server
