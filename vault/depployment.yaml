@@ -36,25 +36,6 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: vault-pvc  # Use your existing PersistentVolumeClaim
-      initContainers:
-        - name: init-vault
-          image: hashicorp/vault:1.8.0
-          command:
-            - "/bin/sh"
-            - "-ec"
-          args:
-            - |
-              vault operator init -key-shares=1 -key-threshold=1 -format=json > /tmp/keys.json
-          env:
-            - name: HOSTNAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: VAULT_ADDR
-              value: "http://127.0.0.1:8200"
-          volumeMounts:
-            - name: data
-              mountPath: /vault/data
       containers:
         - name: vault          
           image: hashicorp/vault:1.8.0
