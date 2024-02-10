@@ -64,12 +64,12 @@ spec:
               value: "http://0.0.0.0:8200"
             - name: VAULT_API_ADDR
               value: "http://$(POD_IP):8200"
-            - name: SKIP_SETCAP
-              value: "true"
             - name: VAULT_CLUSTER_ADDR
               value: "https://$(HOSTNAME).vault-internal:8201"
             - name: HOME
               value: "/home/vault"
+            - name: VAULT_DEV_ROOT_TOKEN_ID
+              value: "your-root-token" # Set your desired root token
           volumeMounts:
             - name: data
               mountPath: /vault/data  
