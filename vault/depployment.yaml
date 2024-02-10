@@ -45,6 +45,13 @@ spec:
           args:
             - |
               vault operator init -key-shares=1 -key-threshold=1 -format=json > /tmp/keys.json
+          env:
+            - name: HOSTNAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: VAULT_ADDR
+              value: "http://127.0.0.1:8200"
           volumeMounts:
             - name: data
               mountPath: /vault/data
