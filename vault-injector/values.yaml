@@ -26,7 +26,7 @@ deployment:
     - name: VAULT_TOKEN
       value: "your-root-token"
     - name: VAULT_RENEW_TOKEN
-      value: false
+      value: "false"
 #    - name: VAULT_TOKEN_LEASE_DURATION
 #      value: "999999"
 
