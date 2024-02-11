@@ -24,10 +24,7 @@ deployment:
 
   environmentVars:
     - name: VAULT_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: vault-secrets-operator
-          key: VAULT_TOKEN
+      value: "your-root-token"
 
     # Token auth method:
     # - name: VAULT_TOKEN
