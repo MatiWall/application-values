@@ -21,9 +21,10 @@ args:
 
 environmentVars:
   - name: VAULT_TOKEN
-    value: "your-root-token"
-  # Set environment variables from a secret. This must be done, if you use the
-  # Token or AppRole Auth Methods of Vault.
+    valueFrom:
+      secretKeyRef:
+        name: vault-secrets-operator
+        key: VAULT_TOKEN
 
   # Token auth method:
   # - name: VAULT_TOKEN
