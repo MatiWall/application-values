@@ -83,7 +83,7 @@ deployment:
   # will watch all namespaces. If the value is empty and rbac.namespaced is set to
   # true, then the namespace of the release will be used.
   vault:
-    address: "http://vault.mw"
+    address: "http://vault-service.vault.svc.cluster.local:8000"
     header: ""
     authMethod: token
     tokenPath: ""
