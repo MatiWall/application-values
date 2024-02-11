@@ -25,6 +25,8 @@ deployment:
   environmentVars:
     - name: VAULT_TOKEN
       value: "your-root-token"
+    - name: VAULT_TOKEN_LEASE_DURATION
+      value: "999999"
 
     # Token auth method:
     # - name: VAULT_TOKEN
