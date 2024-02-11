@@ -5,7 +5,7 @@ deployment:
   replicaCount: 1
 
   secrets:
-    enable: true
+    enabled: true
 
   image:
     repository: docker-registry.mw/homelab-api-catcode
