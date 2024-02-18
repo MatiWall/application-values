@@ -85,7 +85,7 @@ deployment:
   # will watch all namespaces. If the value is empty and rbac.namespaced is set to
   # true, then the namespace of the release will be used.
   vault:
-    address: "https://vault.vault-internal.svc:8201"
+    address: "http://vault-service.vault.svc.cluster.local:8000"
     header: ""
     authMethod: kubernetes
     tokenPath: ""
