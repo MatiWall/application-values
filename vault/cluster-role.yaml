@@ -1,4 +1,3 @@
-# vault-cluster-role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -6,7 +5,14 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
-  verbs: ["get", "list"]
+  verbs: ["get", "list", "create", "update", "delete"]  # Add create, update, and delete verbs for secrets
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["list", "watch"]
+# Add permissions for authentication resources
+- apiGroups: [""]
+  resources: ["serviceaccounts"]
+  verbs: ["get"]
+- apiGroups: ["authentication.k8s.io"]
+  resources: ["tokenreviews"]
+  verbs: ["create"]
