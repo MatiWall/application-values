@@ -14,4 +14,6 @@ spec:
     services:
     - name: vault-service
       port: 80
+    - name: vault-service
+      port: 443
 
