@@ -5,10 +5,10 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
-  verbs: ["get", "list", "create", "update", "delete"]  # Add create, update, and delete verbs for secrets
+  verbs: ["get", "list", "create", "update", "delete", "patch"]  # Add create, update, and delete verbs for secrets
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["list", "watch"]
+  verbs: ["get", "list", "create", "update", "delete", "patch"]
 # Add permissions for authentication resources
 - apiGroups: [""]
   resources: ["serviceaccounts"]
