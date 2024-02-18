@@ -87,7 +87,7 @@ deployment:
   vault:
     address: "http://vault-service.vault.svc.cluster.local:8200"
     header: ""
-    authMethod: token
+    authMethod: kubernetes
     tokenPath: ""
     kubernetesPath: auth/kubernetes
     kubernetesRole: vault-secrets-operator
