@@ -24,7 +24,7 @@ deployment:
 
   environmentVars:
     - name: VAULT_TOKEN
-      value: "your-root-token"
+      value: "hvs.TmGOSJZHBsrfZmy29elBMAf5"
     - name: VAULT_TOKEN_LEASE_DURATION
       value: "9999"
     - name: VAULT_RENEW_TOKEN
