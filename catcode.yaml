@@ -6,9 +6,8 @@ metadata:
   system: homelab
   application: argocd
   deployableUnit: application-values
-  owner: mw
   tags:
   - ArgoCD
 spec:
   type: config
-
+  owner: mw
