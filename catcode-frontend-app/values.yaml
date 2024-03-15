@@ -16,7 +16,7 @@ deployment:
     pullPolicy: IfNotPresent
 
   service:
-    name: catcode-api-service
+    name: catcode-frontend
     type: ClusterIP
     port: 80
 
