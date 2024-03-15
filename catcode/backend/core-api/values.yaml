@@ -1,8 +1,8 @@
 # my-react-app/values.yaml
 global:
   system: catcode
-  application: core
-  deployableUnit: catalogEntryReader
+  application: backend
+  deployableUnit: core-api
 
 deployment:
   replicaCount: 1
