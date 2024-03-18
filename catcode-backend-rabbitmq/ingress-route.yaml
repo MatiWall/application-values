@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rabbitmq-ingress-route
+  namespace: catcode
+spec:
+  entryPoints:
+  - websecure
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`catcode-rabbitmq.mw`)
+    priority: 10
+    services:
+    - name: abbitmq-ui
+      port: 80
+
