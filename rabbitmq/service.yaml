@@ -4,7 +4,7 @@ metadata:
   name: rabbitmq
   labels:
     app: rabbitmq
-  namespace: catcode
+  namespace: rabbitmq
 spec:
   ports:
     - port: 5672
@@ -18,7 +18,7 @@ metadata:
   name: rabbitmq-ui
   labels:
     app: rabbitmq-ui
-  namespace: catcode
+  namespace: rabbitmq
 spec:
   ports:
     - port: 80
