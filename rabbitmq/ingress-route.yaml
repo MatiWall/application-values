@@ -9,9 +9,9 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`catcode-rabbitmq.mw`)
+    match: Host(`rabbitmq.mw`)
     priority: 10
     services:
-    - name: abbitmq-ui
+    - name: rabbitmq-ui
       port: 80
 
