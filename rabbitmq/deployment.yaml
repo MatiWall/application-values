@@ -28,9 +28,12 @@ spec:
           limits:
             memory: "512Mi"    # Limit to 512 MB of memory
             cpu: "200m"        # Limit to 200 milliCPU (0.2 CPU)
+        env:
+          - name: RABBITMQ_ENABLED_PLUGINS_FILE
+            value: /etc/rabbitmq/configs/enabled_plugins
         volumeMounts:
         - name: rabbitmq-plugins-config
-          mountPath: /etc/rabbitmq/enabled_plugins
+          mountPath: /etc/rabbitmq/configs/enabled_plugins
           subPath: enabled_plugins
           readOnly: true
       volumes:
