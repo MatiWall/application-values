@@ -14,3 +14,7 @@ spec:
         port: 9092
         expose: true
         exposedPort: 9092
+      amqp:
+        port: 5672
+        expose: true
+        exposedPort: 5672
