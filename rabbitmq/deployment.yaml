@@ -28,6 +28,11 @@ spec:
           limits:
             memory: "512Mi"    # Limit to 512 MB of memory
             cpu: "200m"        # Limit to 200 milliCPU (0.2 CPU)
-        env:
-        - name: RABBITMQ_MANAGEMENT_UI
-          value: "true"  # Enable the RabbitMQ management UI
+        volumeMounts:
+        - name: rabbitmq-plugins-config
+          mountPath: /etc/rabbitmq/enabled_plugins
+          readOnly: true
+      volumes:
+      - name: rabbitmq-plugins-config
+        configMap:
+          name: rabbitmq-enabled-plugins
