@@ -23,7 +23,7 @@ spec:
   entryPoints:
     - amqp
   routes:
-    - match: HostSNI(`rabbitmq.mw`)
+    - match: HostSNI(`*`) # rabbitmq.mw
       services:
         - name: rabbitmq
           port: 5672
