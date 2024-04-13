@@ -11,8 +11,8 @@ deployment:
     enabled: true
 
   image:
-    repository: docker-registry.mw/catcode.backend.core-api
-    tag: 0.0.1
+    repository: docker-registry.mw/catcode-backend-core-api
+    tag: 0.0.2
     pullPolicy: IfNotPresent
 
   service:
