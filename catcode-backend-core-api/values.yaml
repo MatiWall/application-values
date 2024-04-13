@@ -26,4 +26,5 @@ deployment:
     pathType: ImplementationSpecific
     path: /
     url: catcode.backend.core-api.mw
+  appconfig: {"rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/"}
 
