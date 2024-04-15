@@ -11,18 +11,20 @@ deployment:
     enabled: true
 
   image:
-    repository: docker-registry.mw/catcode.backend.core-api
-    tag: 0.0.1
+    repository: docker-registry.mw/catcode-backend-core-api
+    tag: 0.0.3
     pullPolicy: IfNotPresent
 
   service:
     name: catcode-api-service
     type: ClusterIP
     port: 80
+    targetPort: 8000
 
   ingress:
     enabled: true
     pathType: ImplementationSpecific
     path: /
     url: catcode.backend.core-api.mw
+  appconfig: {"rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/"}
 
