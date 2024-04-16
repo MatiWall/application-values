@@ -8,7 +8,7 @@ deployment:
   replicaCount: 1
 
   secrets:
-    enabled: true
+    enabled: false
 
   image:
     repository: docker-registry.mw/catcode-backend-dependencies
