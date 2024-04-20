@@ -26,5 +26,8 @@ deployment:
     pathType: ImplementationSpecific
     path: /
     url: catcode.backend.catdocs.mw
-  appconfig: {"backend_url": "http://catcode-api-service.catcode.svc.cluster.local"}
+  appconfig: {
+    "core_api": "http://catcode-api-service.catcode.svc.cluster.local",
+    "rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/"
+  }
 
