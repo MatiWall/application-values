@@ -17,10 +17,10 @@ spec:
       containers:
       - name: bind
         image: cytopia/bind
-        env:
-        - name: DOCKER_LOGS
-          value: 1
-        - name: ALLOW_QUERY
-          value: any
-        ports:
-        - containerPort: 53
+        volumeMounts:
+        - name: bind-config
+          mountPath: /etc/bind
+      volumes:
+      - name: bind-config
+        configMap:
+          name: bind-config

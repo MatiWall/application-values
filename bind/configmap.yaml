@@ -1,0 +1,42 @@
+# bind-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bind-config
+data:
+  named.conf: |
+    options {
+        directory "/var/cache/bind";
+        recursion yes;         
+        allow-query { any; };  
+
+        forwarders {
+            8.8.8.8;  // Google's DNS server
+            8.8.4.4;
+        };
+
+        forward only;
+    };
+
+    zone "mw.local" {
+        type master;
+        file "/etc/bind/db.mw.local";
+        allow-query { any; };  // Allow queries for this zone from any client
+        // Define the records for mw.local zone
+        @       IN      SOA     mw.local. admin.mw.local. (
+                                    3         ; Serial
+                                604800         ; Refresh
+                                 86400         ; Retry
+                               2419200         ; Expire
+                                604800 )       ; Negative Cache TTL
+        @       IN      NS      ns1.mw.local.
+        @       IN      A       192.168.0.11
+    };
+
+    zone "." {
+        type forward;
+        forwarders {
+            8.8.8.8;  // Google's DNS server
+            8.8.4.4;
+        };
+    };
