@@ -17,11 +17,3 @@ spec:
       containers:
       - name: bind
         image: cytopia/bind
-        volumeMounts:
-        - name: bind-config
-          mountPath: /etc/bind
-          subPath: named.conf
-      volumes:
-      - name: bind-config
-        configMap:
-          name: bind-config
