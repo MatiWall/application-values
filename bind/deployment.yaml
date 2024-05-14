@@ -20,12 +20,8 @@ spec:
         volumeMounts:
         - name: bind-config
           mountPath: /etc/bind
-          readOnly: true
-        - name: bind-custom
-          mountPath: /etc/bind/custom
+          subPath: named.conf
       volumes:
       - name: bind-config
         configMap:
           name: bind-config
-      - name: bind-custom
-        emptyDir: {}
