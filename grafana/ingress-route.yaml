@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`grafana.mw`)
+    match: Host(`grafana.mw.local`)
     priority: 10
     services:
     - name: grafana-service
