@@ -17,6 +17,9 @@ spec:
       containers:
       - name: bind
         image: cytopia/bind
+        env:
+          - name: DNS_A
+            value: "*.mw.local=192.168.0.11"
         resources:
           limits:
             memory: "512Mi"
@@ -24,11 +27,3 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "50m"
-        volumeMounts:
-        - name: bind-config
-          mountPath: /etc/bind/named.conf
-          subPath: named.conf
-      volumes:
-      - name: bind-config
-        configMap:
-          name: bind-config
