@@ -20,6 +20,12 @@ spec:
         env:
           - name: DNS_A
             value: "*.mw.local=192.168.0.11"
+          - name: DNS_FORWARDER
+            value: "8.8.8.8,8.8.4.4"
+          - name: ALLOW_QUERY
+            value: "any"
+          - name: ALLOW_RECURSION
+            value: "any"
         resources:
           limits:
             memory: "512Mi"
