@@ -3,12 +3,10 @@ kind: Service
 metadata:
   name: bind-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: bind
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
     - port: 53
       targetPort: 53
-      nodePort: 53
       protocol: UDP
