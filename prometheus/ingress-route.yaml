@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`prometheus.mw`)
+    match: Host(`prometheus.mw.local`)
     priority: 10
     services:
     - name: prometheus-service

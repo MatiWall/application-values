@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`kafka-ui.mw`)
+    match: Host(`kafka-ui.mw.local`)
     priority: 10
     services:
     - name: kafka-ui-service

@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`vault.mw`)
+    match: Host(`vault.mw.local`)
     priority: 10
     services:
     - name: vault-service

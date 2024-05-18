@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`tempo.mw`)
+    match: Host(`tempo.mw.local`)
     priority: 10
     services:
     - name: tempo-service

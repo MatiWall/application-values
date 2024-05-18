@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`pypi.mw`)
+    match: Host(`pypi.mw.local`)
     priority: 10
     services:
     - name: pypiserver-service

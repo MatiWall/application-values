@@ -7,7 +7,7 @@ spec:
     - web
     - websecure
   routes:
-  - match: Host(`docker-registry.mw`) && PathPrefix(`/`)
+  - match: Host(`docker-registry.mw.local`) && PathPrefix(`/`)
     kind: Rule
     services:
     - name: docker-registry-service

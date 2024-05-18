@@ -9,7 +9,7 @@ spec:
   - web
   routes:
   - kind: Rule
-    match: Host(`loki.mw`)
+    match: Host(`loki.mw.local`)
     priority: 10
     services:
     - name: loki-service

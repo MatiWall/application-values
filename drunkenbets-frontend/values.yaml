@@ -17,4 +17,4 @@ deployment:
     enabled: true
     pathType: ImplementationSpecific
     path: /
-    url: drunkenbets.mw
+    url: drunkenbets.mw.local
