@@ -12,6 +12,6 @@ spec:
     match: Host(`argo-workflow.mw.local`)
     priority: 10
     services:
-    - name: grafana-service
+    - name: argo-workflow-service
       port: 80
 
