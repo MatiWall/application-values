@@ -2,5 +2,6 @@
 
 deployment:
   nameOverride: argo-workflow
+  fullnameOverride: argo-workflow
   server:
     extraArgs: ["--auth-mode=server"]
