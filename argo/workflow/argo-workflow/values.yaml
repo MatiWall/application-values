@@ -5,7 +5,7 @@ deployment:
   fullnameOverride: argo-workflow
   ingress:
     enabled: true  # Enable the ingress resource
-    annotations:   # Add any necessary annotations here
+    annotations:   
       traefik.ingress.kubernetes.io/frontend-entry-points: "http"
     
     hosts:
