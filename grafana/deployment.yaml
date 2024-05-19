@@ -48,6 +48,14 @@ spec:
             value: /etc/grafana/provisioning/dashboards
           - name: RESOURCE
             value: both
+          - name: GF_SECURITY_ADMIN_PASSWORD
+            value: admin
+          - name: GF_AUTH_ANONYMOUS_ENABLED
+            value: "true"
+          - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+            value: Admin
+          - name: GF_AUTH_DISABLE_LOGIN_FORM
+            value: "true"
       volumes:
         - name: grafana-volume
           persistentVolumeClaim:
