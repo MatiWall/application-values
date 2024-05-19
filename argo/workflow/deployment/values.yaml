@@ -1,0 +1,5 @@
+
+
+deployment:
+  server:
+    extraArgs: ["--auth-mode=server"]
