@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: argo-workflow-service
+  name: argo-workflow-ingress
   namespace: argo
 spec:
   entryPoints:
@@ -12,6 +12,6 @@ spec:
     match: Host(`argo-workflow.mw.local`)
     priority: 10
     services:
-    - name: argo-workflow-service
-      port: 80
+    - name: argo-workflow-server
+      port: 2746
 
