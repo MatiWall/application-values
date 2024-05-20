@@ -3,7 +3,7 @@ kind: Workflow
 metadata:
   generateName: hello-world-
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   entrypoint: whalesay
   templates:
