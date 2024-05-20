@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  generateName: cloner-
+  name: git-cloner
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 spec:
@@ -13,7 +13,7 @@ spec:
       - name: revision
         value: HEAD
       - name: branch
-        value: master
+        value: main
       - name: path
         value: extensions-opentelemetry
   templates:
