@@ -1,0 +1,88 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: deploy-pipline
+spec:
+  entrypoint: cloner
+  serviceAccountName: argo-workflow-svc
+  volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
+    - metadata:
+        name: workdir                     # name of volume claim
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+  arguments:
+    parameters:
+      - name: giturl
+        value: https://github.com/MatiWall/  # Provide the correct GitHub URL here
+      - name: revision
+        value: HEAD
+      - name: branch
+        value: main
+      - name: path
+        value: extensions-opentelemetry
+  templates:
+    - name: cloner
+      inputs:
+        parameters:
+          - name: giturl
+            value: "{{workflow.parameters.giturl}}"
+          - name: revision
+            value: "{{workflow.parameters.revision}}"
+          - name: branch
+            value: "{{workflow.parameters.branch}}"
+          - name: path
+            value: "{{workflow.parameters.path}}"
+      container:
+        image: alpine/git:latest
+        command: [sh, -c]
+        args:
+          - git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+    - name: install-dependencies
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - pip install poetry && poetry install --dev
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+    - name: run-pytest
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - poetry run pytest .
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+    - name: build-package
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - poetry build
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+    - name: push-package
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - poetry publish -r private
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+          
