@@ -39,6 +39,8 @@ spec:
                   value: "{{workflow.parameters.branch}}"
                 - name: path
                   value: "{{workflow.parameters.path}}"
+        - - name: install-poetry
+            template: install-poetry
         - - name: install-dependencies
             template: install-dependencies
         - - name: run-pytest
@@ -67,16 +69,26 @@ spec:
       volumeMount:
         - name: workdir
           path: src/
+    - name: install-poetry
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - pip install poetry
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: /src
     - name: install-dependencies
       container:
         image: python:3.12
         command: [sh, -c]
         args:
-          - pip install poetry && poetry install --dev
-        workingDir: /src
+          - poetry install --dev
+        workingDir: /src/{{workflow.parameters.path}}
       volumeMount:
         - name: workdir
-          path: src/
+          path: /src
     - name: run-pytest
       container:
         image: python:3.12
