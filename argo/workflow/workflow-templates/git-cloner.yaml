@@ -29,7 +29,7 @@ spec:
           - name: path
             value: "{{workflow.parameters.path}}"
       container:
-        image: alpine:latest
+        image: alpine/git:latest
         command: [sh, -c]
         args:
           - git clone {{inputs.parameters.giturl}} --branch {{inputs.parameters.branch}} --single-branch {{inputs.parameters.path}}
