@@ -3,8 +3,6 @@
 deployment:
   nameOverride: argo-workflow
   fullnameOverride: argo-workflow
-  workflowNamespaces:
-    - argo
   server:
     extraArgs: ["--auth-mode=server"]
     ingress:

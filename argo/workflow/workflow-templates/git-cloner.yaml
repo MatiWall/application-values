@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: Replace=true
 spec:
   entrypoint: cloner
+  serviceAccountName: argo-workflow-svc
   arguments:
     parameters:
       - name: giturl
