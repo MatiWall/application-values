@@ -3,7 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: deploy-pipline
 spec:
-  entrypoint: cloner
+  entrypoint: build-and-deploy
   serviceAccountName: argo-workflow-svc
   volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
     - metadata:
@@ -25,17 +25,39 @@ spec:
       - name: path
         value: extensions-opentelemetry
   templates:
+    - name: build-and-deploy
+      steps:
+        - - name: clone-repo
+            template: cloner
+            arguments:
+              parameters:
+                - name: giturl
+                  value: "{{workflow.parameters.giturl}}"
+                - name: revision
+                  value: "{{workflow.parameters.revision}}"
+                - name: branch
+                  value: "{{workflow.parameters.branch}}"
+                - name: path
+                  value: "{{workflow.parameters.path}}"
+        - - name: install-dependencies
+            template: install-dependencies
+        - - name: run-pytest
+            template: run-pytest
+          - name: run-mypy
+            template: run-mypy
+        - - name: build-package
+            template: build-package
+        - - name: push-package
+            template: push-package
+
+               
     - name: cloner
       inputs:
         parameters:
           - name: giturl
-            value: "{{workflow.parameters.giturl}}"
           - name: revision
-            value: "{{workflow.parameters.revision}}"
           - name: branch
-            value: "{{workflow.parameters.branch}}"
           - name: path
-            value: "{{workflow.parameters.path}}"
       container:
         image: alpine/git:latest
         command: [sh, -c]
@@ -61,6 +83,16 @@ spec:
         command: [sh, -c]
         args:
           - poetry run pytest .
+        workingDir: /src
+      volumeMount:
+        - name: workdir
+          path: src/
+    - name: run-mypy
+      container:
+        image: python:3.12
+        command: [sh, -c]
+        args:
+          - poetry run mypy .
         workingDir: /src
       volumeMount:
         - name: workdir
