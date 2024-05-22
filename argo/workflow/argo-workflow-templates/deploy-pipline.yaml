@@ -95,7 +95,7 @@ spec:
         command: [sh, -c]
         args:
           - poetry run pytest .
-        workingDir: /src
+        workingDir: /src/{{workflow.parameters.path}}
       volumeMount:
         - name: workdir
           path: src/
@@ -105,7 +105,7 @@ spec:
         command: [sh, -c]
         args:
           - poetry run mypy .
-        workingDir: /src
+        workingDir: /src/{{workflow.parameters.path}}
       volumeMount:
         - name: workdir
           path: src/
@@ -115,7 +115,7 @@ spec:
         command: [sh, -c]
         args:
           - poetry build
-        workingDir: /src
+        workingDir: /src/{{workflow.parameters.path}}
       volumeMount:
         - name: workdir
           path: src/
@@ -125,7 +125,7 @@ spec:
         command: [sh, -c]
         args:
           - poetry publish -r private
-        workingDir: /src
+        workingDir: /src/{{workflow.parameters.path}}
       volumeMount:
         - name: workdir
           path: src/

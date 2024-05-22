@@ -1,0 +1,71 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: python-base-image
+spec:
+  entrypoint: build-and-deploy
+  serviceAccountName: argo-workflow-svc
+  volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
+    - metadata:
+        name: workdir                     # name of volume claim
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+  arguments:
+    parameters:
+      - name: python-version
+        value: 3.12  # Provide the correct GitHub URL here
+  templates:
+    - name: build-and-deploy
+      steps:
+        - - name: build
+            template: build
+            arguments:
+              parameters:
+                - name: python-version
+                  value: "3.12"
+                - name: image-version
+                  value: "1"
+                - name: registry
+                  value: docker-registry.mw.
+        - - name: push
+            template: push
+            
+               
+    - name: build
+      inputs:
+        parameters:
+          - name: python-version
+          - name: image-version
+      container:
+        image: docker:latest
+        command: [sh, -c]
+        args:
+          - |
+            cat <<EOF > Dockerfile
+            FROM python:{{inputs.parameters.python-version}}-slim
+            WORKDIR /app
+            COPY . /app
+            RUN pip install poetry
+            EOF
+            docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
+            docker save -o python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+        workingDir: /workspace
+      volumeMounts:
+        - name: workdir
+          mountPath: /workspace
+
+    - name: push
+      container:
+        image: docker:latest
+        command: [sh, -c]
+        args:
+          - docker load -i python_image.tar
+            docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+      volumeMounts:
+        - name: workdir
+          mountPath: /workspace
