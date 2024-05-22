@@ -59,6 +59,12 @@ spec:
         args:
           - |
             docker run --privileged --name docker -e DOCKER_TLS_CERTDIR=/certs -v docker-certs-ca:/certs/ca -v docker-certs-client:/certs/client docker:dind
+            
+            until docker exec docker docker info > /dev/null 2>&1; do
+              echo "Waiting for Docker daemon to start..."
+              sleep 1
+            done
+            
             docker exec -it docker /bin/sh
 
             cat <<EOF > Dockerfile
