@@ -27,6 +27,14 @@ spec:
       steps:
         - - name: build
             template: build
+            arguments:
+              parameters:
+                - name: python-versions
+                  value: "{{workflow.parameters.python-version}}"
+                - name: image-version
+                  value: "{{workflow.parameters.image-version}}"
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
         - - name: push
             template: push
             
