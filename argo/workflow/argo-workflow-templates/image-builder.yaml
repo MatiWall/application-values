@@ -21,7 +21,7 @@ spec:
       - name: image-version
         value: "1"
       - name: registry
-        value: docker-registry.mw
+        value: docker-registry.mw.local
   templates:
     - name: build-and-deploy
       steps:
