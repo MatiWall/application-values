@@ -37,6 +37,14 @@ spec:
                   value: "{{workflow.parameters.registry}}"
         - - name: push
             template: push
+            arguments:
+              parameters:
+                - name: python-versions
+                  value: "{{workflow.parameters.python-version}}"
+                - name: image-version
+                  value: "{{workflow.parameters.image-version}}"
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
             
                
     - name: build
@@ -55,8 +63,8 @@ spec:
             COPY . /app
             RUN pip install poetry
             EOF
-            docker build -t python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}} .
-            docker save -o python_image.tar python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
+            docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
+            docker save -o python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
         workingDir: /workspace
       volumeMounts:
         - name: workdir
@@ -68,8 +76,8 @@ spec:
         command: [sh, -c]
         args:
           - docker load -i python_image.tar
-            docker tag python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}} {{workflow.parameters.registry}}/python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
-            docker push {{workflow.parameters.registry}}/python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
+            docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
       volumeMounts:
         - name: workdir
           mountPath: /workspace
