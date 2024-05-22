@@ -17,20 +17,16 @@ spec:
   arguments:
     parameters:
       - name: python-version
-        value: 3.12  # Provide the correct GitHub URL here
+        value: "3.12"
+      - name: image-version
+        value: "1"
+      - name: registry
+        value: docker-registry.mw
   templates:
     - name: build-and-deploy
       steps:
         - - name: build
             template: build
-            arguments:
-              parameters:
-                - name: python-version
-                  value: "3.12"
-                - name: image-version
-                  value: "1"
-                - name: registry
-                  value: docker-registry.mw.
         - - name: push
             template: push
             
@@ -51,8 +47,8 @@ spec:
             COPY . /app
             RUN pip install poetry
             EOF
-            docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
-            docker save -o python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            docker build -t python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}} .
+            docker save -o python_image.tar python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
         workingDir: /workspace
       volumeMounts:
         - name: workdir
@@ -64,8 +60,8 @@ spec:
         command: [sh, -c]
         args:
           - docker load -i python_image.tar
-            docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
-            docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            docker tag python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}} {{workflow.parameters.registry}}/python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
+            docker push {{workflow.parameters.registry}}/python:{{workflow.parameters.python-version}}-{{workflow.parameters.image-version}}
       volumeMounts:
         - name: workdir
           mountPath: /workspace
