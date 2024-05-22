@@ -58,7 +58,8 @@ spec:
         command: [sh, -c]
         args:
           - |
-            systemctl start docker
+            docker run --privileged --name docker -e DOCKER_TLS_CERTDIR=/certs -v docker-certs-ca:/certs/ca -v docker-certs-client:/certs/client docker:dind
+            docker exec -it docker /bin/sh
 
             cat <<EOF > Dockerfile
             FROM python:{{inputs.parameters.python-version}}-slim
