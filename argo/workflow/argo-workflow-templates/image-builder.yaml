@@ -58,7 +58,7 @@ spec:
         command: [sh, -c]
         args:
           - |
-            sudo systemctl start docker
+            systemctl start docker
 
             cat <<EOF > Dockerfile
             FROM python:{{inputs.parameters.python-version}}-slim
