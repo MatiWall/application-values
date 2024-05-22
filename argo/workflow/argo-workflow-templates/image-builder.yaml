@@ -29,7 +29,7 @@ spec:
             template: build
             arguments:
               parameters:
-                - name: python-versions
+                - name: python-version
                   value: "{{workflow.parameters.python-version}}"
                 - name: image-version
                   value: "{{workflow.parameters.image-version}}"
@@ -39,7 +39,7 @@ spec:
             template: push
             arguments:
               parameters:
-                - name: python-versions
+                - name: python-version
                   value: "{{workflow.parameters.python-version}}"
                 - name: image-version
                   value: "{{workflow.parameters.image-version}}"
