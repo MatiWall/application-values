@@ -52,6 +52,7 @@ spec:
         parameters:
           - name: python-version
           - name: image-version
+          - name: registry
       container:
         image: docker:latest
         command: [sh, -c]
@@ -71,6 +72,11 @@ spec:
           mountPath: /workspace
 
     - name: push
+      inputs:
+        parameters:
+          - name: python-version
+          - name: image-version
+          - name: registry
       container:
         image: docker:latest
         command: [sh, -c]
