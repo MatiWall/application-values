@@ -57,7 +57,8 @@ spec:
         image: docker:latest
         command: [sh, -c]
         args:
-          - until docker ps; do sleep 1; done;
+          - |
+            until docker ps; do sleep 1; done;
             cat <<EOF > Dockerfile
             FROM python:{{inputs.parameters.python-version}}-slim
             WORKDIR /app
@@ -72,7 +73,7 @@ spec:
           mountPath: /workspace
       env:
         - name: DOCKER_HOST
-          value: 127.0.0.1
+          value: 127.0.0.1:2375
       sidecars:
       - name: docker-in-docker
         image: docker:dind
