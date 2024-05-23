@@ -66,7 +66,7 @@ spec:
             RUN pip install poetry
             EOF
             docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
-            docker save -o python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            docker save -o /workspace/python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
         workingDir: /workspace
         volumeMounts:
           - name: workdir
@@ -95,7 +95,7 @@ spec:
         command: [sh, -c]
         args:
           - |
-            docker load < python_image.tar
+            docker load < /workspace/python_image.tar
             docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
             docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
       workingDir: /workspace
