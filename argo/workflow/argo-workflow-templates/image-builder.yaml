@@ -13,11 +13,6 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  volumes:
-    - name: docker-socket
-      hostPath:
-        path: /var/run/docker.sock
-        type: Socket
 
   arguments:
     parameters:
@@ -76,8 +71,9 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /workspace
-          - name: docker-socket
-            mountPath: /var/run/docker.sock
+        env:
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375
       sidecars:
       - name: docker-in-docker
         image: docker:dind
