@@ -83,9 +83,6 @@ spec:
         securityContext:
           privileged: true
         mirrorVolumeMounts: true
-        volumeMounts:
-        - name: docker-socket
-          mountPath: /var/run/docker.sock
 
     - name: push
       inputs:
