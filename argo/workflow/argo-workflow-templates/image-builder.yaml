@@ -73,7 +73,7 @@ spec:
             mountPath: /workspace
         env:
           - name: DOCKER_HOST
-            value: tcp://localhost:2376
+            value: 127.0.0.1
       sidecars:
       - name: docker-in-docker
         image: docker:dind
