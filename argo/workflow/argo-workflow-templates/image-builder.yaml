@@ -68,12 +68,12 @@ spec:
             docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
             docker save -o python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
         workingDir: /workspace
-      volumeMounts:
-        - name: workdir
-          mountPath: /workspace
-      env:
-        - name: DOCKER_HOST
-          value: 127.0.0.1:2375
+        volumeMounts:
+          - name: workdir
+            mountPath: /workspace
+        env:
+          - name: DOCKER_HOST
+            value: 127.0.0.1:2375
       sidecars:
       - name: docker-in-docker
         image: docker:dind
