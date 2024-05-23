@@ -94,7 +94,8 @@ spec:
         image: docker:latest
         command: [sh, -c]
         args:
-          - docker load -i python_image.tar
+          - |
+            docker load < python_image.tar
             docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
             docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
       volumeMounts:
