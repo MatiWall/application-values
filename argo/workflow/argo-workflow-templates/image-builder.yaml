@@ -71,15 +71,17 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /workspace
-        env:
-          - name: DOCKER_HOST
-            value: 127.0.0.1:2375
+          - name: docker-socket
+            mountPath: /var/run/docker.sock
       sidecars:
       - name: docker-in-docker
         image: docker:dind
         securityContext:
           privileged: true
         mirrorVolumeMounts: true
+        volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
 
     - name: push
       inputs:
