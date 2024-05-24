@@ -67,6 +67,7 @@ spec:
             EOF
             docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
             docker save -o /workspace/python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
+            ls -l /workspace
         workingDir: /workspace
         volumeMounts:
           - name: workdir
