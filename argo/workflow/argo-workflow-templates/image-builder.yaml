@@ -96,6 +96,7 @@ spec:
         command: [sh, -c]
         args:
           - |
+            ls -l
             docker load < /workspace/python_image.tar
             docker tag python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
             docker push {{inputs.parameters.registry}}/python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
@@ -103,3 +104,15 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /workspace
+        env:
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375
+      sidecars:
+      - name: docker-in-docker
+        image: docker:dind
+        securityContext:
+          privileged: true
+        mirrorVolumeMounts: true
+        command: ["dockerd", "--host=unix:///var/run/docker.sock", "--host=tcp://0.0.0.0:2375"]
+        ports:
+          - containerPort: 2375  # Expose Docker daemon on HTTP port  
