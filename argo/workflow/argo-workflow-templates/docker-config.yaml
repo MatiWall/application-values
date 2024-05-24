@@ -5,7 +5,7 @@ metadata:
 data:
   daemon.json: |
     {
-      "insecure-registries": ["192.168.0.8:5000", "192.168.1.32:5000", "docker-registry.mw.local"],
+      "insecure-registries": ["docker-registry-service.docker-registry.svc.cluster.local"],
       "experimental": true,
       "features": {
         "buildkit": true
