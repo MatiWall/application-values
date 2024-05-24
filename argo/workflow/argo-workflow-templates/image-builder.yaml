@@ -120,3 +120,7 @@ spec:
         command: ["dockerd", "--host=unix:///var/run/docker.sock", "--host=tcp://0.0.0.0:2375"]
         ports:
           - containerPort: 2375  # Expose Docker daemon on HTTP port  
+  volumes:
+    - name: docker-daemon-config
+      configMap:
+        name: docker-daemon-config
