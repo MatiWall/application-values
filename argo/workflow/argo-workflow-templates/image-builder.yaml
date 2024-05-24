@@ -105,6 +105,9 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /workspace
+          - name: docker-daemon-config
+            mountPath: /etc/docker/daemon.json
+            subPath: daemon.json
         env:
           - name: DOCKER_HOST
             value: tcp://localhost:2375
