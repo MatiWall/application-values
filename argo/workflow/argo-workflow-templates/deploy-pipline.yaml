@@ -111,7 +111,9 @@ spec:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
-          - poetry install --dev --local
+          - |
+            sleep 1000
+            poetry install --dev --local
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
