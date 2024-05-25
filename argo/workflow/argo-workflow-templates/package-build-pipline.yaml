@@ -108,6 +108,7 @@ spec:
         parameters:
           - name: registry
           - name: base-image
+      imagePullPolicy: Always
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
