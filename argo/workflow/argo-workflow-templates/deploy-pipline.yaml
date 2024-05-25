@@ -97,7 +97,10 @@ spec:
         image: alpine/git:latest
         command: [sh, -c]
         args:
-          - git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
+          - |
+            git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
+            ls -l /src
+            ls -l /src/{{workflow.parameters.path}}
         workingDir: /src
         volumeMount:
           - name: workdir
