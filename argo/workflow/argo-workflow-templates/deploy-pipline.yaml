@@ -44,14 +44,6 @@ spec:
                   value: "{{workflow.parameters.branch}}"
                 - name: path
                   value: "{{workflow.parameters.path}}"
-        - - name: install-poetry
-            template: install-poetry
-            arguments:
-              parameters:
-                - name: registry
-                  value: "{{workflow.parameters.registry}}"
-                - name: base-image
-                  value: "{{workflow.parameters.base-image}}"
         - - name: install-dependencies
             template: install-dependencies
             arguments:
