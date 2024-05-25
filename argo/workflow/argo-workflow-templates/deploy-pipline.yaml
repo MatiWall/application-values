@@ -104,7 +104,7 @@ spec:
         workingDir: /src
         volumeMount:
           - name: workdir
-            path: src/
+            mountPath: src/
     - name: install-dependencies
       inputs:
         parameters:
@@ -121,7 +121,7 @@ spec:
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
-            path: /src
+            mountPath: /src
     - name: run-pytest
       inputs:
         parameters:
@@ -135,7 +135,7 @@ spec:
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
-            path: src/
+            mountPath: src/
     - name: run-mypy
       inputs:
         parameters:
@@ -149,7 +149,7 @@ spec:
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
-            path: src/
+            mountPath: src/
     - name: build-package
       inputs:
         parameters:
@@ -163,7 +163,7 @@ spec:
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
-            path: src/
+            mountPath: src/
     - name: push-package
       inputs:
         parameters:
@@ -177,5 +177,5 @@ spec:
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
           - name: workdir
-            path: src/
+            mountPath: src/
           
