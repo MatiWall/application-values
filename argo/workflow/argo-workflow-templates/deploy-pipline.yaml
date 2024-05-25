@@ -112,7 +112,8 @@ spec:
         command: [sh, -c]
         args:
           - |
-            ls
+            echo 'here'
+            ls -l
             poetry install --dev --local
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
