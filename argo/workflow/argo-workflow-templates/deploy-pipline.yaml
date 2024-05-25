@@ -108,11 +108,11 @@ spec:
           - name: registry
           - name: base-image
       container:
-        image: alpine/git:latest #"{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - |
-            sleep 1000
+            ls
             poetry install --dev --local
         workingDir: /src/{{workflow.parameters.path}}
         volumeMount:
