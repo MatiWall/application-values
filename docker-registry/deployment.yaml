@@ -22,7 +22,7 @@ spec:
           mountPath: /mnt/ext1/registry
         env:
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
-          value: "[http://docker-registry-ui.mw]"
+          value: "[http://docker-registry-ui.mw.local]"
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Methods
           value: "[HEAD,GET,OPTIONS,DELETE]"
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Credentials
