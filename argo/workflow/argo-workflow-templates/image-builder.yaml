@@ -21,7 +21,7 @@ spec:
       - name: image-version
         value: "1"
       - name: registry
-        value: docker-registry-service.docker-registry.svc.cluster.local:5000
+        value: docker-registry.mw.local #docker-registry-service.docker-registry.svc.cluster.local:5000
   templates:
     - name: build-and-deploy
       steps:
