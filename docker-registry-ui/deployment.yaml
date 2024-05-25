@@ -20,7 +20,7 @@ spec:
             - containerPort: 80
           env:
             - name: REGISTRY_URL
-              value: "http://docker-registry.mw"
+              value: "http://docker-registry.mw.local"
             - name: SINGLE_REGISTRY
               value: "true"
             - name: REGISTRY_TITLE
