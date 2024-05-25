@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: deploy-pipline
+  name: package-build-pipline
 spec:
   entrypoint: build-and-deploy
   serviceAccountName: argo-workflow-svc
