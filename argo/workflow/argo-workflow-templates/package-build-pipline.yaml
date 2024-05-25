@@ -27,7 +27,7 @@ spec:
       - name: registry
         value: docker-registry.mw.local/
       - name: base-image
-        value: python:3.12-1
+        value: python:3.12-2
       
   templates:
     - name: build-and-deploy
