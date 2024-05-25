@@ -99,8 +99,6 @@ spec:
         args:
           - |
             git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
-            ls -l /src
-            ls -l /src/{{workflow.parameters.path}}
         workingDir: /src
         volumeMounts:
           - name: workdir
@@ -115,9 +113,7 @@ spec:
         command: [sh, -c]
         args:
           - |
-            echo 'here'
-            ls -l
-            poetry install --dev --local
+            poetry install --with dev --local
         workingDir: /src/{{workflow.parameters.path}}
         volumeMounts:
           - name: workdir
