@@ -113,7 +113,7 @@ spec:
         command: [sh, -c]
         args:
           - |
-            poetry install --with dev --local
+            poetry install --with dev
         workingDir: /src/{{workflow.parameters.path}}
         volumeMounts:
           - name: workdir
