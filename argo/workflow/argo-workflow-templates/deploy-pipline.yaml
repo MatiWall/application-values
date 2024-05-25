@@ -24,6 +24,11 @@ spec:
         value: main
       - name: path
         value: extensions-opentelemetry
+      - name: registry
+        value: docker-registry.mw.local/
+      - name: base-image
+        value: python:3.12-1
+      
   templates:
     - name: build-and-deploy
       steps:
@@ -41,16 +46,52 @@ spec:
                   value: "{{workflow.parameters.path}}"
         - - name: install-poetry
             template: install-poetry
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
         - - name: install-dependencies
             template: install-dependencies
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
         - - name: run-pytest
             template: run-pytest
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
           - name: run-mypy
             template: run-mypy
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
         - - name: build-package
             template: build-package
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
         - - name: push-package
             template: push-package
+            arguments:
+              parameters:
+                - name: registry
+                  value: "{{workflow.parameters.registry}}"
+                - name: base-image
+                  value: "{{workflow.parameters.base-image}}"
 
                
     - name: cloner
@@ -66,67 +107,57 @@ spec:
         args:
           - git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
         workingDir: /src
-      volumeMount:
-        - name: workdir
-          path: src/
-    - name: install-poetry
-      container:
-        image: python:3.12
-        command: [sh, -c]
-        args:
-          - pip install poetry
-        workingDir: /src
-      volumeMount:
-        - name: workdir
-          path: /src
+        volumeMount:
+          - name: workdir
+            path: src/
     - name: install-dependencies
       container:
-        image: python:3.12
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
-          - poetry install --dev
+          - poetry install --dev --local
         workingDir: /src/{{workflow.parameters.path}}
-      volumeMount:
-        - name: workdir
-          path: /src
+        volumeMount:
+          - name: workdir
+            path: /src
     - name: run-pytest
       container:
-        image: python:3.12
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - poetry run pytest .
         workingDir: /src/{{workflow.parameters.path}}
-      volumeMount:
-        - name: workdir
-          path: src/
+        volumeMount:
+          - name: workdir
+            path: src/
     - name: run-mypy
       container:
-        image: python:3.12
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - poetry run mypy .
         workingDir: /src/{{workflow.parameters.path}}
-      volumeMount:
-        - name: workdir
-          path: src/
+        volumeMount:
+          - name: workdir
+            path: src/
     - name: build-package
       container:
-        image: python:3.12
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - poetry build
         workingDir: /src/{{workflow.parameters.path}}
-      volumeMount:
-        - name: workdir
-          path: src/
+        volumeMount:
+          - name: workdir
+            path: src/
     - name: push-package
       container:
-        image: python:3.12
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - poetry publish -r private
         workingDir: /src/{{workflow.parameters.path}}
-      volumeMount:
-        - name: workdir
-          path: src/
+        volumeMount:
+          - name: workdir
+            path: src/
           
