@@ -108,7 +108,7 @@ spec:
           - name: registry
           - name: base-image
       container:
-        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
+        image: alpine/git:latest #"{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
           - |
