@@ -23,7 +23,7 @@ spec:
       - name: branch
         value: main
       - name: path
-        value: extensions-opentelemetry
+        value: extensions-configuration #opentelemetry
       - name: registry
         value: docker-registry.mw.local/
       - name: base-image
@@ -142,7 +142,7 @@ spec:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
         args:
-          - poetry run mypy .
+          - name=$(sed -n 's/^name = "\(.*\)-\(.*\)"/\1.\2/p' pyproject.toml) && poetry run mypy -p "$name"
         workingDir: /src/{{workflow.parameters.path}}
         volumeMounts:
           - name: workdir
