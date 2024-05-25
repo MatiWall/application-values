@@ -62,9 +62,11 @@ spec:
             cat <<EOF > Dockerfile
             FROM python:{{inputs.parameters.python-version}}-slim
             WORKDIR /app
-            COPY . /app
+            
+            ENV POETRY_HOME=/app \ 
+                POETRY_VIRTUALENVS_IN_PROJECT=true \
+                POETRY_NO_INTERACTION=true
             RUN pip install poetry
-            RUN poetry config settings.virtualenvs.in-project true
             EOF
             docker build -t python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}} .
             docker save -o /workspace/python_image.tar python:{{inputs.parameters.python-version}}-{{inputs.parameters.image-version}}
