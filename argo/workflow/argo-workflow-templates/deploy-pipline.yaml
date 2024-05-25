@@ -103,6 +103,10 @@ spec:
           - name: workdir
             path: src/
     - name: install-dependencies
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
@@ -113,6 +117,10 @@ spec:
           - name: workdir
             path: /src
     - name: run-pytest
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
@@ -123,6 +131,10 @@ spec:
           - name: workdir
             path: src/
     - name: run-mypy
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
@@ -133,6 +145,10 @@ spec:
           - name: workdir
             path: src/
     - name: build-package
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
@@ -143,6 +159,10 @@ spec:
           - name: workdir
             path: src/
     - name: push-package
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
       container:
         image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
         command: [sh, -c]
