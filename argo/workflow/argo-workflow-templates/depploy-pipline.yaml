@@ -47,14 +47,6 @@ spec:
                   value: "{{workflow.parameters.repo}}"
                 - name: subpath
                   value: "{{workflow.parameters.subpath}}"
-        - - name: install-dependencies
-            template: install-dependencies
-            arguments:
-              parameters:
-                - name: registry
-                  value: "{{workflow.parameters.registry}}"
-                - name: base-image
-                  value: "{{workflow.parameters.base-image}}"
         - - name: build
             template: build
         - - name: push
@@ -85,23 +77,6 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: src/
-    - name: install-dependencies
-      inputs:
-        parameters:
-          - name: registry
-          - name: base-image
-      imagePullPolicy: Always
-      container:
-        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
-        command: [sh, -c]
-        args:
-          - |
-            ls -l
-            poetry install
-        workingDir: /src
-        volumeMounts:
-          - name: workdir
-            mountPath: /src
     - name: build
       container:
         image: docker:latest
