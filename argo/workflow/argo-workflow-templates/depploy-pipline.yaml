@@ -1,0 +1,137 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: deploy-pipline
+spec:
+  entrypoint: build-and-deploy
+  serviceAccountName: argo-workflow-svc
+  volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
+    - metadata:
+        name: workdir                     # name of volume claim
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+  arguments:
+    parameters:
+      - name: giturl
+        value: https://github.com/MatiWall/  # Provide the correct GitHub URL here
+      - name: revision
+        value: HEAD
+      - name: branch
+        value: main
+      - name: path
+        value: extensions-configuration #opentelemetry
+      - name: registry
+        value: docker-registry.mw.local/
+      - name: base-image
+        value: python:3.12-2
+  templates:
+    - name: cloner
+      inputs:
+        parameters:
+          - name: giturl
+          - name: revision
+          - name: branch
+          - name: path
+      container:
+        image: alpine/git:latest
+        command: [sh, -c]
+        args:
+          - |
+            git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
+        workingDir: /src
+        volumeMounts:
+          - name: workdir
+            mountPath: src/
+    - name: install-dependencies
+      inputs:
+        parameters:
+          - name: registry
+          - name: base-image
+      imagePullPolicy: Always
+      container:
+        image: "{{inputs.parameters.registry}}{{inputs.parameters.base-image}}"
+        command: [sh, -c]
+        args:
+          - |
+            poetry install
+        workingDir: /src/{{workflow.parameters.path}}
+        volumeMounts:
+          - name: workdir
+            mountPath: /src
+    - name: build
+      inputs:
+        parameters:
+          - name: python-version
+          - name: image-version
+          - name: registry
+      container:
+        image: docker:latest
+        command: [sh, -c]
+        args:
+          - |
+            until docker ps; do sleep 1; done;
+            docker build -t image:0.0.1 .
+            docker save -o /workspace/image.tar image:0.0.1
+            ls -l /workspace
+        workingDir: /workspace
+        volumeMounts:
+          - name: workdir
+            mountPath: /workspace
+        env:
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375
+      sidecars:
+      - name: docker-in-docker
+        image: docker:dind
+        securityContext:
+          privileged: true
+        mirrorVolumeMounts: true
+        command: ["dockerd", "--host=unix:///var/run/docker.sock", "--host=tcp://0.0.0.0:2375"]
+        ports:
+          - containerPort: 2375  # Expose Docker daemon on HTTP port
+    
+    - name: push
+      inputs:
+        parameters:
+          - name: python-version
+          - name: image-version
+          - name: registry
+      container:
+        image: docker:latest
+        command: [sh, -c]
+        args:
+          - |
+            ls -l
+            until docker ps; do sleep 1; done;
+            name=$(cat pyproject.toml | grep name | head -1 | grep -oh "\".*\"")
+            version=$(cat pyproject.toml | grep version | head -1 | grep -oh "\".*\"")
+            docker load < /workspace/image.tar
+            docker tag image:0.0.1 {{inputs.parameters.registry}}:$version
+            docker push {{inputs.parameters.registry}}/$name:$version
+        workingDir: /workspace
+        volumeMounts:
+          - name: workdir
+            mountPath: /workspace
+          - name: docker-daemon-config
+            mountPath: /etc/docker/daemon.json
+            subPath: daemon.json
+        env:
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375
+      sidecars:
+      - name: docker-in-docker
+        image: docker:dind
+        securityContext:
+          privileged: true
+        mirrorVolumeMounts: true
+        command: ["dockerd", "--host=unix:///var/run/docker.sock", "--host=tcp://0.0.0.0:2375"]
+        ports:
+          - containerPort: 2375  # Expose Docker daemon on HTTP port  
+  volumes:
+    - name: docker-daemon-config
+      configMap:
+        name: docker-daemon-config
