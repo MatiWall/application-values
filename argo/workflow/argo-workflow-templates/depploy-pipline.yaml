@@ -80,7 +80,7 @@ spec:
           - |
             git clone {{inputs.parameters.giturl}}{{inputs.parameters.repo}} /tmp/repo
             ls /tmp/repo/services/core-api
-            mv /tmp/repo/{{inputs.parameters.repo}}{{inputs.parameters.subpath}}/* /src
+            mv /tmp/repo/{{inputs.parameters.repo}}{{inputs.parameters.subpath}} /src
             rm -rf /tmp/repo
         workingDir: /src
         volumeMounts:
