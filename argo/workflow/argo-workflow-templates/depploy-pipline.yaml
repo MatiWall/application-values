@@ -57,7 +57,7 @@ spec:
             template: push
             arguments:
               parameters:
-                - name: 
+                - name: registry
                   value: "{{workflow.parameters.registry}}"
 
    
