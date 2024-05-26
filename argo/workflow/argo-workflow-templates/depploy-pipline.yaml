@@ -22,8 +22,10 @@ spec:
         value: HEAD
       - name: branch
         value: main
-      - name: path
-        value: catcode-backend/services/core-api #opentelemetry
+      - name: repo
+        value: catcode-backend
+      - name: subpath
+        value: /services/core-api
       - name: registry
         value: docker-registry.mw.local/
       - name: base-image
@@ -41,8 +43,10 @@ spec:
                   value: "{{workflow.parameters.revision}}"
                 - name: branch
                   value: "{{workflow.parameters.branch}}"
-                - name: path
-                  value: "{{workflow.parameters.path}}"
+                - name: repo
+                  value: "{{workflow.parameters.repo}}"
+                - name: subpath
+                  value: "{{workflow.parameters.subpath}}"
         - - name: install-dependencies
             template: install-dependencies
             arguments:
@@ -67,13 +71,16 @@ spec:
           - name: giturl
           - name: revision
           - name: branch
-          - name: path
+          - name: repo
+          - name: subpath
       container:
         image: alpine/git:latest
         command: [sh, -c]
         args:
           - |
-            git clone {{inputs.parameters.giturl}}{{inputs.parameters.path}} --branch {{inputs.parameters.branch}}
+            git clone {{inputs.parameters.giturl}}{{inputs.parameters.repo}} --branch {{inputs.parameters.branch}} /tmp/repo
+            mv /tmp/repo/{{inputs.parameters.repo}}{{inputs.parameters.path}}/* /src
+            rm -rf /tmp/repo
         workingDir: /src
         volumeMounts:
           - name: workdir
@@ -91,7 +98,7 @@ spec:
           - |
             ls -l
             poetry install
-        workingDir: /src/{{workflow.parameters.path}}
+        workingDir: /src
         volumeMounts:
           - name: workdir
             mountPath: /src
@@ -103,12 +110,12 @@ spec:
           - |
             until docker ps; do sleep 1; done;
             docker build -t image:0.0.1 .
-            docker save -o /workspace/image.tar image:0.0.1
-            ls -l /workspace
-        workingDir: /workspace
+            docker save -o /src/image.tar image:0.0.1
+            ls -l /src
+        workingDir: /src
         volumeMounts:
           - name: workdir
-            mountPath: /workspace
+            mountPath: src/
         env:
           - name: DOCKER_HOST
             value: tcp://localhost:2375
@@ -135,13 +142,13 @@ spec:
             until docker ps; do sleep 1; done;
             name=$(cat pyproject.toml | grep name | head -1 | grep -oh "\".*\"")
             version=$(cat pyproject.toml | grep version | head -1 | grep -oh "\".*\"")
-            docker load < /workspace/image.tar
+            docker load < /src/image.tar
             docker tag image:0.0.1 {{inputs.parameters.registry}}:$version
             docker push {{inputs.parameters.registry}}/$name:$version
-        workingDir: /workspace
+        workingDir: /src
         volumeMounts:
           - name: workdir
-            mountPath: /workspace
+            mountPath: src/
           - name: docker-daemon-config
             mountPath: /etc/docker/daemon.json
             subPath: daemon.json
