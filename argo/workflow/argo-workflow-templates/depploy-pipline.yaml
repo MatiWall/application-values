@@ -23,7 +23,7 @@ spec:
       - name: branch
         value: main
       - name: path
-        value: extensions-configuration #opentelemetry
+        value: catcode-backend/services/core-api #opentelemetry
       - name: registry
         value: docker-registry.mw.local/
       - name: base-image
