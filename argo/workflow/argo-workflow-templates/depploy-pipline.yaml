@@ -21,7 +21,7 @@ spec:
       - name: revision
         value: HEAD
       - name: branch
-        value: main
+        value: master
       - name: repo
         value: catcode-backend
       - name: subpath
@@ -78,7 +78,7 @@ spec:
         command: [sh, -c]
         args:
           - |
-            git clone {{inputs.parameters.giturl}}{{inputs.parameters.repo}} --branch {{inputs.parameters.branch}} /tmp/repo
+            git clone {{inputs.parameters.giturl}}{{inputs.parameters.repo}} /tmp/repo
             mv /tmp/repo/{{inputs.parameters.repo}}{{inputs.parameters.subpath}}/* /src
             rm -rf /tmp/repo
         workingDir: /src
