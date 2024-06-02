@@ -1,5 +1,0 @@
-
-
-deployment:
-  nameOverride: argo-events
-  fullnameOverride: argo-events
