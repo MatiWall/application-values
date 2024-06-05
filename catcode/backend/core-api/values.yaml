@@ -1,30 +1,24 @@
-# my-react-app/values.yaml
 global:
   system: catcode
   application: backend
   deployableUnit: core-api
-
 deployment:
   replicaCount: 1
-
   secrets:
     enabled: true
-
   image:
     repository: docker-registry.mw/catcode-backend-core-api
-    tag: 0.0.4
+    tag: 1.1.1a
     pullPolicy: IfNotPresent
-
   service:
     name: catcode-api-service
     type: ClusterIP
     port: 80
     targetPort: 8000
-
   ingress:
     enabled: true
     pathType: ImplementationSpecific
     path: /
     url: catcode.backend.core-api.mw
-  appconfig: {"rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/"}
-
+  appconfig:
+    rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/
