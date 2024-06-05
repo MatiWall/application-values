@@ -8,7 +8,7 @@ deployment:
     enabled: true
   image:
     repository: docker-registry.mw/catcode-backend-core-api
-    tag: 1.1.1a
+    tag: 1.1.1b
     pullPolicy: IfNotPresent
   service:
     name: catcode-api-service
