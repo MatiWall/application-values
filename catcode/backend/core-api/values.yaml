@@ -7,7 +7,7 @@ deployment:
   secrets:
     enabled: true
   image:
-    repository: docker-registry.mw/catcode-backend-core-api
+    repository: docker-registry.mw/catcode.backend.coreapi
     tag: 0.1.2
     pullPolicy: IfNotPresent
   service:
