@@ -23,8 +23,7 @@ deployment:
 
   ingress:
     enabled: true
-    pathType: ImplementationSpecific
-    path: /
-    url: catcode.backend.dependencies.mw
-  appconfig: {"backend_url": "http://catcode-api-service.catcode.svc.cluster.local"}
+    path: /api/v1/dependencies
+    host: catcode.mw.local
+  appconfig: {"backend_url": "http://catcode.mw.local/api/v1/core-api"}
 
