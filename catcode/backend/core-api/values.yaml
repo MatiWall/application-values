@@ -17,8 +17,7 @@ deployment:
     targetPort: 8000
   ingress:
     enabled: true
-    pathType: ImplementationSpecific
-    path: /
-    url: catcode.backend.core-api.mw
+    host: catcode.mw.local
+    path: /api/v1/core-api
   appconfig:
     rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/
