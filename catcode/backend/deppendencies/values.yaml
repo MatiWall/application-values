@@ -1,29 +1,23 @@
-# my-react-app/values.yaml
 global:
   system: catcode
   application: backend
   deployableUnit: dependencies
-
 deployment:
   replicaCount: 1
-
   secrets:
     enabled: false
-
   image:
     repository: docker-registry.mw/catcode-backend-dependencies
-    tag: 0.0.3
+    tag: 0.1.1
     pullPolicy: IfNotPresent
-
   service:
     name: catcode-dependencies-api
     type: ClusterIP
     port: 80
     targetPort: 8001
-
   ingress:
     enabled: true
     path: /api/v1/dependencies
     host: catcode.mw.local
-  appconfig: {"backend_url": "http://catcode.mw.local/api/v1/core-api"}
-
+  appconfig:
+    backend_url: http://catcode.mw.local/api/v1/core-api
