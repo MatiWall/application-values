@@ -7,7 +7,7 @@ deployment:
   secrets:
     enabled: false
   image:
-    repository: docker-registry.mw/catcode.backend.catdocs
+    repository: docker-registry.mw.local/catcode.backend.catdocs
     tag: 0.1.1
   service:
     name: catcode-catdocs-api
