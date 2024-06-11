@@ -1,23 +1,17 @@
-# my-react-app/values.yaml
 global:
   system: catcode
   application: backend
   deployableUnit: catdocs
-
 deployment:
   replicaCount: 1
-
   secrets:
     enabled: false
-
   image:
-    repository: docker-registry.mw/catcode-backend-catdocs
-    tag: 0.0.8
-
+    repository: docker-registry.mw.local/catcode.backend.catdocs
+    tag: 0.1.1
   service:
     name: catcode-catdocs-api
     targetPort: 8002
-
   ingress:
     enabled: true
     host: catcode.mw.local
