@@ -23,7 +23,7 @@ deployment:
 
   ingress:
     enabled: true
-    path: /api/v1/dependencies
+    path: /api/dependencies/v1
     host: catcode.mw.local
   appconfig: {"backend_url": "http://catcode.mw.local/api/v1/core-api"}
 

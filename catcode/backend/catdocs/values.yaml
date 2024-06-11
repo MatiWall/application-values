@@ -21,7 +21,7 @@ deployment:
   ingress:
     enabled: true
     host: catcode.mw.local
-    path: /api/v1/catdocs
+    path: /api/catdocs/v1
   appconfig: {
     "core_api": "http://catcode.mw.local/api/v1/core-api", 
     "rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local"

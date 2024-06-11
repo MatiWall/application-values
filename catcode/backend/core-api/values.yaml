@@ -18,6 +18,6 @@ deployment:
   ingress:
     enabled: true
     host: catcode.mw.local
-    path: /api/v1/core-api
+    path: /api/core-api/v1
   appconfig:
     rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/
