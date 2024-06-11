@@ -17,6 +17,6 @@ deployment:
     host: catcode.mw.local
     path: /api/catdocs/v1
   appconfig: {
-    "core_api": "http://catcode.mw.local/api/v1/core-api", 
+    "core_api": "http://catcode.mw.local/api/core-api/v1", 
     "rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local"
     }
