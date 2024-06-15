@@ -8,7 +8,7 @@ deployment:
     enabled: false
   image:
     repository: docker-registry.mw.local/catcode.backend.catdocs
-    tag: 0.1.1
+    tag: 0.1.2
   service:
     name: catcode-catdocs-api
     targetPort: 8002
@@ -16,7 +16,6 @@ deployment:
     enabled: true
     host: catcode.mw.local
     path: /api/catdocs/v1
-  appconfig: {
-    "core_api": "http://catcode.mw.local/api/core-api/v1", 
-    "rabbitmq_url": "amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local"
-    }
+  appconfig:
+    core_api: http://catcode.mw.local/api/core-api/v1
+    rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local
