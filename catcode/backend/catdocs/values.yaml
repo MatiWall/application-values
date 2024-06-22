@@ -8,7 +8,7 @@ deployment:
     enabled: false
   image:
     repository: docker-registry.mw.local/catcode.backend.catdocs
-    tag: 0.1.5
+    tag: 0.1.6
   service:
     name: catcode-catdocs-api
     targetPort: 8002
