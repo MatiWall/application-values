@@ -19,5 +19,5 @@ deployment:
     enabled: true
     host: catcode.mw.local
     path: /api/core-api/v1
-  #appconfig:
-   # rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local/
+    appconfig:
+      rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local:5672/
