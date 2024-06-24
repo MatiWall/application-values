@@ -23,5 +23,9 @@ spec:
   ports:
     - port: 80
       targetPort: 15672
+      name: ui
+    - port: 15692
+      targetPort: 15692
+      name: metrics
   selector:
     app: rabbitmq
