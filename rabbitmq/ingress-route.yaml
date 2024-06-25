@@ -13,12 +13,6 @@ spec:
     services:
     - name: rabbitmq-ui
       port: 80
-  - kind: Rule
-    match: Host(`rabbitmq.mw.local`) && PathPrefix(`/metrics`)
-    priority: 10
-    services:
-    - name: rabbitmq-ui
-      port: 15692
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRouteTCP

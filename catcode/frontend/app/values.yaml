@@ -23,6 +23,6 @@ deployment:
   ingress:
     enabled: true
     pathType: ImplementationSpecific
+    host: catcode.mw.local
     path: /
-    url: catcode.mw.local
 
