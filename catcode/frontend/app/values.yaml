@@ -7,7 +7,7 @@ deployment:
   secrets:
     enabled: false
   image:
-    repository: docker-registry.mw/catcode.frontend.app
+    repository: docker-registry.mw.local/catcode.frontend.app
     tag: 0.1.1
     pullPolicy: IfNotPresent
   service:
