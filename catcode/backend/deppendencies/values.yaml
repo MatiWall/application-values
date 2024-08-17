@@ -8,7 +8,7 @@ deployment:
     enabled: false
   image:
     repository: docker-registry.mw.local/catcode.backend.dependencies
-    tag: 0.1.1
+    tag: 0.1.2
     pullPolicy: IfNotPresent
   service:
     name: catcode-dependencies-api
