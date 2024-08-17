@@ -1,28 +1,21 @@
-# my-react-app/values.yaml
 global:
   system: catcode
   application: frontend
   deployableUnit: app
-
 deployment:
   replicaCount: 1
-
   secrets:
     enabled: false
-
   image:
     repository: docker-registry.mw/catcode.frontend.app
-    tag: 0.0.1
+    tag: 0.1.1
     pullPolicy: IfNotPresent
-
   service:
     name: catcode-frontend
     type: ClusterIP
     port: 80
-
   ingress:
     enabled: true
     pathType: ImplementationSpecific
     host: catcode.mw.local
     path: /
-
