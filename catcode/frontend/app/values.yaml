@@ -19,11 +19,12 @@ deployment:
     name: catcode-frontend
     type: ClusterIP
     port: 80
-    priority: 1
+    
 
   ingress:
     enabled: true
     pathType: ImplementationSpecific
     host: catcode.mw.local
     path: /
+    priority: 1
 
