@@ -8,17 +8,15 @@ deployment:
     enabled: false
   image:
     repository: docker-registry.mw.local/catcode.frontend.app
-    tag: 0.1.1
+    tag: 0.1.2
     pullPolicy: IfNotPresent
   service:
     name: catcode-frontend
     type: ClusterIP
     port: 80
-
   ingress:
     enabled: true
     pathType: ImplementationSpecific
     host: catcode.mw.local
     path: /
     priority: 1
-
