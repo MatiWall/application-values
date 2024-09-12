@@ -21,4 +21,4 @@ deployment:
     path: /api/core-api/v1
   appconfig:
     rabbitmq_url: amqp://guest:guest@rabbitmq.rabbitmq.svc.cluster.local:5672/
-    etcd_host: http://etcd.mw.local:80
+    etcd_host: etcd.catcode.svc.cluster.local:80
